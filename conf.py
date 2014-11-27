@@ -13,15 +13,12 @@ release = version = "Project"
 html_title = 'Beaker development'
 html_use_index = False
 html_domain_indices = False
-html_theme = 'basic'
-html_theme_options = {'nosidebar': True}
-pygments_style = 'sphinx'
-templates_path = ['../sphinx-templates']
+html_theme = 'default'
 
 
 intersphinx_mapping = {
-    'python': ('http://docs.python.org/', '../python-intersphinx.inv'),
-    'sqlalchemy': ('http://docs.sqlalchemy.org/en/rel_0_7/', '../sqlalchemy-intersphinx.inv'),
+    'python': ('http://docs.python.org/', None),
+    'sqlalchemy': ('http://docs.sqlalchemy.org/en/rel_0_7/', None),
 }
 
 # This config is also a Sphinx extension with some Beaker-specific customisations:
