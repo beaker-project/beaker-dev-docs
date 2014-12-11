@@ -55,7 +55,6 @@ project), or else under active development for an upcoming Beaker release.
 
    handling-large-installations
    reference-harness
-   system-page-improvements
    inventory-lshw-migration      
 
 
@@ -86,12 +85,13 @@ version of Beaker.
 .. toctree::
    :maxdepth: 1
 
-   harness-api
-   enhanced-user-groups
-   external-tasks
-   beaker-usage-report-emails
+   system-page-improvements
    custom-distros
+   beaker-usage-report-emails
    dynamic-virtualization
+   external-tasks
+   enhanced-user-groups
+   harness-api
 
 
 Rejected/withdrawn design proposals
