@@ -2,8 +2,10 @@ Maintaining the beaker-project.org infrastructure
 =================================================
 
 This document describes the configuration and upgrade procedures for the host 
-running beaker-project.org. If you just want to update the web site at 
-http://beaker-project.org/ see its `README 
+running beaker-project.org, and setting up a new project on
+git.beaker-project.org and gerrit.beaker-project.org.
+
+If you just want to update the web site at http://beaker-project.org/ see its `README
 <http://git.beaker-project.org/cgit/beaker-project.org/tree/README>`__.
 
 Configuration management
@@ -95,3 +97,20 @@ from localhost, e.g. Gerrit notifications).
 All user accounts (including root) have a mail alias in ``/etc/aliases`` 
 pointing to their real address. No mail should ever be delivered to the local 
 system.
+
+Setting up a new project
+------------------------
+
+First, initialize a shared bare repository on beaker-project.org:
+
+- SSH to beaker-project.org: ``ssh <username>@beaker-project.org``
+- Init a bare git repo at :file:`/srv/git/`: ``git init --bare --shared <project_name>``
+- Change the directory permissions: ``chown -R <username>:beakerdevs /srv/git/<project_name>``
+
+Next, setup the project on gerrit:
+
+- Login to gerrit and go to
+  http://gerrit.beaker-project.org/#/admin/create-project/
+- Inherit permissions from the "beaker" project
+- Setup "DENY" permission for  "Fedorahosted replication authgroup"
+- Push the new project's code to the master branch: ``git push git+ssh://<username>@gerrit.beaker-project.org:29418/<project-name> master``
