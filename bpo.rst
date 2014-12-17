@@ -24,18 +24,12 @@ you need a user account to be created.
 Lighttpd
 --------
 
-Lighttpd listens on port 80 and serves all web traffic for 
-\*.beaker-project.org. SSL on port 443 is disabled since we do not have any SSL 
-certificates.
+Lighttpd listens on ports 80 and 443 and serves all web traffic for 
+\*.beaker-project.org.
 
 The base config is in the standard place (``/etc/lighttpd/lighttpd.conf``). 
 Config for each name-based virtual host is included from the corresponding file 
 in ``/etc/lighttpd/vhosts.d/``.
-
-At present, a custom rebuild of the lighttpd package is installed to fix `bug 
-912546 <https://bugzilla.redhat.com/show_bug.cgi?id=912546>`_. Make sure not to 
-upgrade/downgrade to a version of the package which is not patched (for 
-example, when upgrading to a new Fedora release).
 
 Git daemon
 ----------
