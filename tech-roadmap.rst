@@ -41,9 +41,6 @@ implemented as either TG1 controllers or Flask handlers. We are also
 aiming to replace the front end components with cleaner alternatives
 based on Twitter Bootstrap.
 
-The systems page is being redesigned completely and is described in
-the :ref:`proposal-system-page-improvements` design proposal.
-
 
 Improved inventory task
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,6 +53,7 @@ query on a larger set of hardware architectures.
 This idea is covered by the :ref:`proposal-lshw-migration` design
 proposal.
 
+
 Run tests from inside a container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -67,11 +65,69 @@ instead of the host would be a useful feature to have
 (:issue:`1131388`). 
 
 
+Reference harness implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At present all Beaker recipes are run with the same harness, Beah. We would
+like to develop a minimal "reference harness" implementation, so that we can
+experiment with some harness features which would be disruptive or difficult to
+implement in Beah.
+
+This idea is covered by the :doc:`proposals/reference-harness` design proposal.
+
+Issues with running the existing Beah harness inside a container has raised
+the importance of making the new reference harness more readily available
+to Beaker users.
+
+
+Shared access policies
+~~~~~~~~~~~~~~~~~~~~~~
+
+Beaker 0.15 implemented the first phase of the :ref:`proposal-access-policies`
+design proposal, taking the previously limited permissions model for
+individual systems and providing a far more fine-grained model. Remote
+access through the Beaker command line client makes it possible to manage
+access to large numbers of systems this way.
+
+Beaker 20 will implement the second phase of the
+:ref:`proposal-access-policies` proposal, separating out access policies as
+a distinct entity in Beaker's user interface, allowing a common access policy
+to be shared amongst multiple systems (system access policies are already a
+distinct concept in the data model, but cannot currently be shared
+across multiple systems).
+
+
 Planned development
 -------------------
 
 The ideas in this section are firmly on the to-do list, but it is not yet
 clear when they will be ready for inclusion.
+
+
+Improvements to the job status page
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The current job status page is difficult to read and use in many respects.
+
+A redesign of the page is being planned for early 2015 to address this wide
+array of significant issues.
+
+
+xUnit (and subunit?) output support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+While a Jenkins plugin to trigger Beaker jobs is available, the reporting is
+currently limited as Beaker doesn't provide job results in a format that
+Jenkins understands.
+
+It would be helpful if Beaker supported exporting the results of jobs in
+xUnit format. The nose `xunit plugin
+<http://nose.readthedocs.org/en/latest/plugins/xunit.html>`__ may be a
+useful guide to this (:issue:`1123244`).
+
+A potentially related change would be to support retrieval of
+`subunit results <https://pypi.python.org/pypi/python-subunit>`__ for
+in-progress jobs.
 
 
 Explicit system pools
@@ -167,22 +223,6 @@ analytical capabilities to Beaker itself. Even if an installation uses other
 data extraction and warehousing systems, Teiid and Metrique based examples
 in the Beaker repos may serve as an illustrative guide.
 
-Shared access policies
-~~~~~~~~~~~~~~~~~~~~~~
-
-Beaker 0.15 implemented the first phase of the :ref:`proposal-access-policies`
-design proposal, taking the previously limited permissions model for
-individual systems and providing a far more fine-grained model. Remote
-access through the Beaker command line client makes it possible to manage
-access to large numbers of systems this way.
-
-A future release will implement the second phase of the
-:ref:`proposal-access-policies` proposal, separating out access policies as
-a distinct entity in Beaker's user interface, allowing a common access policy
-to be shared amongst multiple systems (system access policies are already a
-distinct concept in the data model, but cannot currently be shared
-across multiple systems).
-
 
 Improved handling of reservations and system loans
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -210,32 +250,6 @@ The ideas in this section are projects that one or more of the current
 developers are at least tinkering with, but they may be at wildly
 divergent stages of maturity.
 
-xUnit and subunit output support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-While a Jenkins plugin to trigger Beaker jobs is available, the reporting is
-currently limited as Beaker doesn't provide job results in a format that
-Jenkins understands.
-
-It would be helpful if Beaker supported exporting the results of jobs in
-xUnit format. The nose `xunit plugin
-<http://nose.readthedocs.org/en/latest/plugins/xunit.html>`__ may be a
-useful guide to this (:issue:`1123244`).
-
-A potentially related change would be to support retrieval of
-`subunit results <https://pypi.python.org/pypi/python-subunit>`__ for
-in-progress jobs.
-
-
-Reference harness implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-At present all Beaker recipes are run with the same harness, Beah. We would 
-like to develop a minimal "reference harness" implementation, so that we can 
-experiment with some harness features which would be disruptive or difficult to 
-implement in Beah.
-
-This idea is covered by the :doc:`proposals/reference-harness` design proposal.
 
 Full Fedora compatibility
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -252,6 +266,7 @@ in addition to running them on RHEL6.
 We also plan to resolve the remaining packaging issues preventing inclusion
 of Beaker and its dependencies directly in the main Fedora package
 repositories.
+
 
 Integrated live dashboard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -438,12 +453,13 @@ correctly executing all of the existing Beaker tests that the core Beaker
 developers have access to. The :doc:`proposals/reference-harness` design
 proposal is expected to lead to the eventual creation of just such a harness.
 
-Recently implemented ideas
---------------------------
+Previously implemented ideas
+----------------------------
 
-The following ideas were previously included on this roadmap, but are
-now implemented in Beaker:
+The following ideas were included in earlier versions of this roadmap, but
+are now implemented in Beaker:
 
+- `System page redesign <https://beaker-project.org/docs/whats-new/release-19.html#improved-system-page>`__
 - `Experimental support for Open Stack based dynamic virtualization <http://beaker-project.org/docs/whats-new/release-0.17.html>`__
 - `Installation specific theming of the Web UI <https://beaker-project.org/docs/whats-new/release-0.17.html#theming-the-web-interface>`__
 - `Virtual only test bed for Beaker <https://beaker-project.org/dev/guide/virtual-fedora/>`__
