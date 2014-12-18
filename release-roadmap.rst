@@ -1,35 +1,15 @@
-.. _proposal-handling-large-installations:
+.. _release-roadmap:
 
-Improved Handling of Large Beaker Installations
-===============================================
+Release roadmap
+===============
 
-:Author: Nick Coghlan
-:Status: In Progress
+Beaker is developed iteratively, aiming to publish major new feature releases
+every 6-12 weeks, with smaller, lower impact, maintenance releases published
+between major versions.
 
-Abstract
---------
-
-Beaker currently uses a very simple trust model, where systems are
-either "shared" (no group restrictions on use) or "private" (only
-members of specified groups are able to access the system for any
-purpose). Furthermore, making changes to group membership requires
-action by the administrators of the Beaker installation.
-
-The general theme of this design proposal will be to document
-a progressive set of smaller changes, each useful in its own right,
-that combine in later releases to offer a rich policy administration
-capability that allows system owners to prioritise access to their own
-hardware.
-
-The intent is that, by the time this proposal is implemented, owners
-of systems in Beaker should be comfortable making their systems available
-for use by other users of the same Beaker installation, while being
-confident that they remain in full control of the usage policies for those
-systems, including whether or not other users are even aware of the
-system's presence.
-
-This is a living document that will be updated over the course of
-Beaker's development.
+This release roadmap aims to provide an overview of current plans for
+upcoming releases, as well as a record of past releases, and the most
+significant enhancements in those releases.
 
 Refer to :ref:`dev-lifecycle` for more information on the Beaker development
 process.

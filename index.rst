@@ -10,6 +10,7 @@ proposals.
 
    guide/index
    proposals/index
+   release-roadmap
    tech-roadmap
    related-projects
    bpo

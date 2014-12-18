@@ -53,7 +53,6 @@ project), or else under active development for an upcoming Beaker release.
 .. toctree::
    :maxdepth: 1
 
-   handling-large-installations
    reference-harness
    inventory-lshw-migration      
 
