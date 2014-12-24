@@ -81,11 +81,11 @@ I assume you have libvirt installed correctly on your *host
 system*. In case you need help, this `guide
 <http://fedoraproject.org/wiki/Getting_started_with_virtualization>`__
 may be of help. We will create a new storage pool to store the images for the two
-VMs using this script. Download the `script
-<scripts/setup_storage.sh>`__ and run it as root user.
+VMs using this script. Download the :download:`script
+<scripts/setup_storage.sh>` and run it as root user.
 
-Next, we will setup the ``default`` network using this `script
-<scripts/setup_network.sh>`__.
+Next, we will setup the ``default`` network using this :download:`script
+<scripts/setup_network.sh>`.
 
 .. note::
 
@@ -165,11 +165,11 @@ Setting up Server and Lab controller
 
 Installing
 ~~~~~~~~~~
-This is to be done on the *host system*. First download this
-`kickstart <scripts/beaker-server-lc.ks>`__ which installs the server and lab
+This is to be done on the *host system*. First save this
+:download:`kickstart <scripts/beaker-server-lc.ks>` which installs the server and lab
 controller and other miscellaneous packages. Then, from the directory where
-the kickstart file was downloaded, run `this script
-<scripts/create_server_lc_vm.sh>`__ to create a virtual machine and
+the kickstart file was saved, run :download:`this script
+<scripts/create_server_lc_vm.sh>` to create a virtual machine and
 start a Fedora 20 installation using the downloaded kickstart file.
 
 You may want to replace the Fedora download location in the Bash script and
@@ -189,7 +189,7 @@ server. The following steps need to be completed:
 - Create Beaker database (``beaker``) and give permissions to Beaker's user
 - Initialize Beaker's database
 
-Download and run this `script <scripts/setup_db.sh>`__ to perform the
+Download and run this :download:`script <scripts/setup_db.sh>` to perform the
 above steps. The script will also ask you for the username, password
 and email for creating an ``admin`` account. It is recommended to use
 ``admin`` as the username and a password of your choice.
@@ -265,7 +265,7 @@ That completes our configuration of the lab controller.
 Setup test system
 =================
 
-The script `here <scripts/setup_test_system.sh>`__ will setup the
+The script :download:`here <scripts/setup_test_system.sh>` will setup the
 second VM. Run this script as the root user on the *host* system.
 It will create a libvirt domain with the name ``beaker-test-vm1``. The
 hardware address of the test VM is setup as ``52:54:00:c6:71:8e`` and it
