@@ -8,13 +8,13 @@ Job Page Improvements
 Background and rationale
 ------------------------
 
-The :term:`job page`, accessible at ``/jobs/<id>``, displays the details of 
-a Beaker job and the recipes in it. Similarly the :term:`recipe page`, 
-accessible at ``/recipes/<id>``, displays the details of an individual recipe. 
-Both pages use the same underlying TurboGears widget, called the :term:`recipe 
-widget` in Beaker's source code. The recipe page displays a single recipe 
-widget, whereas the job page displays one or more recipe widgets grouped into 
-recipe sets with job information at the top.
+The *job page*, accessible at ``/jobs/<id>``, displays the details of a Beaker 
+job and the recipes in it. Similarly the *recipe page*, accessible at 
+``/recipes/<id>``, displays the details of an individual recipe. Both pages use 
+the same underlying TurboGears widget, called the *recipe widget* in Beaker's 
+source code. The recipe page displays a single recipe widget, whereas the job 
+page displays one or more recipe widgets grouped into recipe sets with job 
+information at the top.
 
 The layout and user interface of the job and recipe pages have remained 
 substantially unchanged since scheduling capabilities were first added to 
