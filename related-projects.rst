@@ -12,7 +12,7 @@ harness used in Beaker.
 restraint
 ---------
 
-`Restraint <https://github.com/p3ck/restraint>`__ is a minimal test
+`Restraint <https://restraint.readthedocs.org>`__ is a minimal test
 harness implementation for Beaker.
 
 BeakerLib
