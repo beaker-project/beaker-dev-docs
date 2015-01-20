@@ -1,3 +1,5 @@
+.. _proposal-job-page-improvements:
+
 Job Page Improvements
 =====================
 

@@ -18,36 +18,32 @@ process.
 Upcoming releases
 -----------------
 
-Beaker 19.2
-^^^^^^^^^^^
-
-Planned release: January 2015
-
-The Beaker 19.2 minor release (and associated updates to other Beaker
-components) will be focused on improving Beaker's support for test execution
-on Project Atomic container host systems, as well as Beaker's support for
-bare metal testing on ppc64le and aarch64 systems.
-
-
 Beaker 20
 ^^^^^^^^^
 
-Planned release: late January 2015
+Planned release: **March 2015**
 
 The currently planned focus for Beaker 20 is to implement the previously
 deferred predefined access policy feature from the
 :ref:`proposal-access-policies` design proposal.
 
+This release will also enhance Beaker's bare metal provisioning support by
+making it possible to select which bootloader to use based not only on the
+CPU architecture of the server being provisioned, but also the specific
+operating system being installed.
+
 
 Beaker 21
 ^^^^^^^^^
 
-Planned release: March 2015
+Planned release: **April 2015**
 
 The currently planned focus for Beaker 21 is to improve Beaker's result
-reporting capabilities, including the ability to directly export results
-in JUnit-compatible XML format, as well as to enhance the capabilities and
-usability of the job results page in the main Beaker web interface.
+reporting capabilities, as described in :ref:`proposal-job-page-improvements`
+
+This release will also provide the ability to directly export results in
+JUnit-compatible XML format, rather than continuing to requir the use of
+external XSLT templates to perform the translation.
 
 
 Past releases
@@ -55,6 +51,8 @@ Past releases
 
 Beaker 19 (25th November, 2014)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **19.2 (15th January, 2015)**
 
 The focus of Beaker 19 was to implement an improved system
 details page in the Beaker web UI, as the Beaker 0.15 release not only
@@ -73,6 +71,8 @@ See the `Beaker 19 Release Notes
 Beaker 0.18 (4th September, 2014)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Last maintenance release: **0.18.4 (24th October, 2014)**
+
 Beaker 0.18 included improved usage reminder emails as described in
 the :ref:`proposal-beaker-usage-report-emails` design propsal and
 introduced better support for custom distros (as described in the
@@ -84,6 +84,8 @@ See the `Beaker 0.18 Release Notes
 
 Beaker 0.17 (11th June, 2014)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **0.17.3 (14th August, 2014)**
 
 Beaker 0.17 included two new scheduler features:
 
@@ -107,6 +109,8 @@ See the `Beaker 0.17 Release Notes
 Beaker 0.16 (14th March, 2014)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Last maintenance release: **0.16.2 (17th April, 2014)**
+
 The focus of Beaker 0.16 was the :ref:`proposal-external-tasks` design
 proposal, allowing tasks to be managed as references to external git
 repositories, rather than forcing reliance on Beaker's centralised library of
@@ -126,6 +130,8 @@ See the `Beaker 0.16 Release Notes
 Beaker 0.15.1 (22nd October, 2013)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Last maintenance release: **0.15.5 (25th February, 2014)**
+
 The focus of Beaker 0.15 was the per-system access policy portion of
 :ref:`proposal-access-policies`.
 
@@ -142,11 +148,13 @@ rendered it effectively undeployable. The release date given above is for the
 0.15.1 maintenance release that addressed these critical issues.
 
 Due to the extended maintenance lifecycle for Beaker 0.14, Beaker 0.15 also
-had an extended maintenance life cycle (through to February 2014).
+had an extended maintenance life cycle.
 
 
 Beaker 0.14 (2nd August, 2013)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **0.14.4 (29th November, 2013)**
 
 The focus of Beaker 0.14 development was the completion of
 :ref:`proposal-enhanced-user-groups`, by allowing users to nominate
@@ -156,11 +164,13 @@ See the `Beaker 0.14 Release Notes
 <../../docs-release-0.14/whats-new/#beaker-0-14>`__ for details.
 
 Due to the issues with the initial Beaker 0.15 update, Beaker 0.14
-received an extended maintenance life cycle (through to December 2013).
+received an extended maintenance life cycle.
 
 
 Beaker 0.13 (7th June, 2013)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **0.13.2 (3rd July, 2013)**
 
 The focus of Beaker 0.13 was :ref:`proposal-enhanced-user-groups`
 
@@ -182,6 +192,8 @@ details.
 Beaker 0.12 (5th April, 2013)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Last maintenance release: **0.12.1 (23rd April, 2013)**
+
 Beaker 0.12 made it easier for users to switch between production and
 development Beaker instances. It has three key elements:
 
@@ -197,3 +209,14 @@ development Beaker instances. It has three key elements:
 
 See the `Beaker 0.12 Release Notes <../../docs/whats-new/#beaker-0-12>`__ for
 details.
+
+
+Earlier public releases
+^^^^^^^^^^^^^^^^^^^^^^^
+
+For details of all releases back to 0.9.0 (1st June, 2012), refer to
+the `release download page <https://beaker-project.org/releases/>`__.
+
+For dates of all releases back to 0.3 (14th May, 2009), refer to the release
+tags in the `Beaker git repo
+<https://git.beaker-project.org/cgit/beaker/refs/tags>`__.
