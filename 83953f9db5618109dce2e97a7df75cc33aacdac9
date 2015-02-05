@@ -1,0 +1,8 @@
+Ready-for-Checks+1: Amit Saha <asaha@redhat.com>
+Code-Review+2: Nick Coghlan <ncoghlan@redhat.com>
+Verified+1: Nick Coghlan <ncoghlan@redhat.com>
+Submitted-by: Nick Coghlan <ncoghlan@redhat.com>
+Submitted-at: Thu, 05 Feb 2015 23:41:02 +0000
+Reviewed-on: http://gerrit.beaker-project.org/3966
+Project: beaker-dev-docs
+Branch: refs/heads/master
