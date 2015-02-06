@@ -154,3 +154,32 @@ Through the ``bkr`` cli::
 The system will no longer use the access policy defined by a
 pool. If a custom access policy for the system was earlier defined,
 this will now take effect.
+
+
+Deferred features
+-----------------
+
+The following additional features are under consideration, but have been
+deliberately omitted in order to reduce the complexity of the initial
+iteration of the design:
+
+* Adding other pools as members of a pool. The initial iteration
+  does not allow pools to be members of other pools, which introduces
+  potential concerns about scalability in large organisations.
+
+  Adding this feature may also make it possible to effectively delegate
+  the ability to add systems to other pools.
+
+  See the deferred subgroups feature in :ref:`proposal-enhanced-user-groups`
+  for a possible implementation strategy that could also be used for
+  system subpools.
+
+* Pool deletion. The initial iteration does not allow pools to be deleted,
+  or even hidden. This feature may actually be needed to make various other
+  parts of the UI usable, in which case it will be designed and implemented
+  for the target release (and the design proposal updated accordingly).
+
+* Cloning system or pool access control policies. The initial iteration does
+  not include the ability to copy an existing policy when creating a new
+  policy for a system or pool.
+

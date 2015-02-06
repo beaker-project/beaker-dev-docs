@@ -41,7 +41,6 @@ implemented as either TG1 controllers or Flask handlers. We are also
 aiming to replace the front end components with cleaner alternatives
 based on Twitter Bootstrap.
 
-
 Improved inventory task
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -53,48 +52,46 @@ query on a larger set of hardware architectures.
 This idea is covered by the :ref:`proposal-lshw-migration` design
 proposal.
 
-
 Run tests from inside a container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Project Atomic uses rpm-ostree to manage the host environment, so we
 can't install arbitrary additional packages. However, an Atomic host
 provides the bare minimum of infrastructure needed to run containers
-and hence having the ability to run tests inside of a container
-instead of the host would be a useful feature to have
-(:issue:`1131388`). 
+and hence Project Atomic bare metal provisioning will be supported by
+offering the ability to run tests inside of a container instead of directly
+on the host (:issue:`1131388`).
 
+Reference harness modernisation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Reference harness implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+At present all Beaker recipes are run with the same harness, Beah. This
+harness includes a number of features solely for backwards compatibility
+with a legacy test execution system that is now long obsolete.
 
-At present all Beaker recipes are run with the same harness, Beah. We would
-like to develop a minimal "reference harness" implementation, so that we can
-experiment with some harness features which would be disruptive or difficult to
-implement in Beah.
-
-This idea is covered by the :doc:`proposals/reference-harness` design proposal.
+The :doc:`proposals/reference-harness` design proposal covers the creation
+of a new reference harness that not only eliminates those no longer needed
+backwards compatibility features, but is also able to operate independently
+of Beaker and adds new capabilities (such as executing tests directly from
+source control) that would be difficult to implement as part of the current
+harness.
 
 Issues with running the existing Beah harness inside a container has raised
 the importance of making the new reference harness more readily available
 to Beaker users.
 
-
 Shared access policies
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Beaker 0.15 implemented the first phase of the :ref:`proposal-access-policies`
+Beaker 0.15 implemented the :ref:`proposal-access-policies`
 design proposal, taking the previously limited permissions model for
 individual systems and providing a far more fine-grained model. Remote
 access through the Beaker command line client makes it possible to manage
 access to large numbers of systems this way.
 
-Beaker 20 will implement the second phase of the
-:ref:`proposal-access-policies` proposal, separating out access policies as
-a distinct entity in Beaker's user interface, allowing a common access policy
-to be shared amongst multiple systems (system access policies are already a
-distinct concept in the data model, but cannot currently be shared
-across multiple systems).
+Beaker 20 will implement the :ref:`proposal-predefined-access-policies`
+proposal, allowing a common access policy to be shared amongst multiple
+systems by placing those systems into an appropriate system pool.
 
 
 Planned development
@@ -103,22 +100,20 @@ Planned development
 The ideas in this section are firmly on the to-do list, but it is not yet
 clear when they will be ready for inclusion.
 
-
 Improvements to the job status page
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The current job status page is difficult to read and use in many respects.
 
-A redesign of the page is being planned for early 2015 to address this wide
-array of significant issues.
-
+The :ref:`proposal-job-page-improvements` design proposal for Beaker 21 aims
+to address this wide array of significant issues.
 
 xUnit (and subunit?) output support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 While a Jenkins plugin to trigger Beaker jobs is available, the reporting is
 currently limited as Beaker doesn't provide job results in a format that
-Jenkins understands.
+Jenkins understands (although it is possible to use XSLT to translate them).
 
 It would be helpful if Beaker supported exporting the results of jobs in
 xUnit format. The nose `xunit plugin
@@ -128,51 +123,6 @@ useful guide to this (:issue:`1123244`).
 A potentially related change would be to support retrieval of
 `subunit results <https://pypi.python.org/pypi/python-subunit>`__ for
 in-progress jobs.
-
-
-Explicit system pools
-~~~~~~~~~~~~~~~~~~~~~
-
-Beaker currently schedules jobs on any system the user has access to,
-preferring the users own systems over group systems, over the generally
-accessible system pool.
-
-This approach isn't always desirable, since some systems have special
-features that should only be used when explicitly requested, or a user may
-wish to target a specific job at a particular set of machines.
-
-Allowing systems to be grouped into pools (independent of the access policies
-used to grant or deny access to the systems) will allow users to express
-more abstract preferences about machines that aren't directly related to
-the system itself.
-
-This idea is covered by the :ref:`proposal-system-pools` design proposal.
-
-
-Event based scheduler
-~~~~~~~~~~~~~~~~~~~~~
-
-The current scheduler has some issues and limitations that are best resolved
-by switching to a more event-driven architecture. The new design will
-involve attempting to assign newly submitted recipes to an idle system
-without placing the recipe in the main queue, and newly available systems
-to queued recipes without placing the system in the idle pool.
-
-This idea is covered by the :doc:`proposals/event-driven-scheduler` design
-proposal.
-
-
-More flexible job prioritisation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Armed with the new user group and access policy models, and the new event
-driven approach to scheduling, it becomes possible to offer system owners
-much greater control over which recipes are selected to run on their
-systems.
-
-This idea is covered by the :doc:`proposals/effective-job-priorities` design
-proposal.
-
 
 Task oriented guides for users and administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -189,7 +139,6 @@ administrators collaborate effectively in tracking down the more obscure
 failures that can occur with the kind of integration testing Beaker
 supports.
 
-
 Systematic self-tests for provisioning and beah
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -199,7 +148,6 @@ set of self-test Beaker tasks will be made readily available. These tasks
 should come with helper scripts scripts for installing them into a
 Beaker installation and the appropriate job definitions to execute them
 across all configured architectures and distro trees.
-
 
 Integration with Teiid and Metrique
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -224,6 +172,13 @@ data extraction and warehousing systems, Teiid and Metrique based examples
 in the Beaker repos may serve as an illustrative guide.
 
 
+Exploration
+-----------
+
+The ideas in this section are projects that one or more of the current
+developers are at least tinkering with, but they may be at wildly
+divergent stages of maturity.
+
 Improved handling of reservations and system loans
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -241,15 +196,46 @@ and :ref:`proposal-time-limited-system-loans`.
 :issue:`734212` covers providing a command line interface to manage system
 loans.
 
+Explicit system pool selection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Beaker currently schedules jobs on any system the user has access to,
+preferring the users own systems over group systems, over the generally
+accessible system pool.
 
-Exploration
------------
+This approach isn't always desirable, since some systems have special
+features that should only be used when explicitly requested, or a user may
+wish to target a specific job at a particular set of machines.
 
-The ideas in this section are projects that one or more of the current
-developers are at least tinkering with, but they may be at wildly
-divergent stages of maturity.
+Allowing systems to be grouped into pools (independent of the access policies
+used to grant or deny access to the systems) will allow users to express
+more abstract preferences about machines that aren't directly related to
+the system itself.
 
+This idea is covered by the :ref:`proposal-system-pools` design proposal.
+
+Event based scheduler
+~~~~~~~~~~~~~~~~~~~~~
+
+The current scheduler has some issues and limitations that are best resolved
+by switching to a more event-driven architecture. The new design will
+involve attempting to assign newly submitted recipes to an idle system
+without placing the recipe in the main queue, and newly available systems
+to queued recipes without placing the system in the idle pool.
+
+This idea is covered by the :doc:`proposals/event-driven-scheduler` design
+proposal.
+
+More flexible job prioritisation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Armed with the new user group and access policy models, and the new event
+driven approach to scheduling, it becomes possible to offer system owners
+much greater control over which recipes are selected to run on their
+systems.
+
+This idea is covered by the :doc:`proposals/effective-job-priorities` design
+proposal.
 
 Full Fedora compatibility
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -423,7 +409,8 @@ The status of ``beah``
 ----------------------
 
 In many respects, ``beah``, the native Beaker test harness, duplicates aspects
-of other test frameworks like `autotest <http://autotest.github.io/>`__ and
+of other test frameworks like `autotest <http://autotest.github.io/>`__,
+`avocado <https://avocado-framework.github.io/>`__ and
 `STAF <http://staf.sourceforge.net/>`__.
 
 Being so heavily dependent on kickstart files and the RPM based task library,
@@ -434,16 +421,15 @@ The following kinds of changes will be considered for ``beah``:
 * documentation improvements
 * compatibility updates for supported test systems
 * any changes needed for image based provisioning with OpenStack
-* any changes needed for IPv6 compatibility
+* any changes needed for lab infrastructure compatibility
 * reliability fixes
 * equivalent capabilities for additions made to the stable harness API
 
 Outside these areas, we consider it a poor use of resources to further
 duplicate the effort going into development of other automated test
-harnesses (especially ``autotest``), and hence any major feature proposals for
-``beah`` will likely be rejected - we would prefer for any such efforts to
-be directed towards the system changes needed to better support alternative
-harnesss.
+harnesses, and hence any major feature proposals for ``beah`` will likely be
+rejected - we would prefer for any such efforts to be directed towards the
+system changes needed to better support alternative harnesss.
 
 To support existing Beaker users, the ``beah`` test harness will be
 maintained indefinitely, and the kinds of changes noted above will continue

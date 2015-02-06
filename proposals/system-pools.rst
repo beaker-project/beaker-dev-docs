@@ -1,7 +1,7 @@
 .. _proposal-system-pools:
 
-System Pools
-============
+Scheduler Integration for System Pools
+======================================
 
 :Author: Dan Callaghan, Nick Coghlan
 :Status: Deferred
@@ -11,9 +11,9 @@ System Pools
 Abstract
 --------
 
-This proposal adds the ability to mark systems as members of various
-system pools. Job submitters can then express preferences and requirements for 
-system pools in their jobs.
+This proposal builds on the system pools defined in
+:ref:`proposal-predefined-access-policies` by allowing job submitters to
+express preferences and requirements for system pools in their jobs.
 
 
 Proposal deferral
@@ -27,58 +27,16 @@ as a replacement for the current bespoke Beaker scheduler.
 Proposal
 --------
 
-A "pool" is a named collection of systems.
+As defined in :ref:`proposal-predefined-access-policies` a "pool" in this
+proposal is a named collection of systems. Each pool has an "owning group".
+Users in the owning group are allowed to add and remove systems from the pool.
 
-Each pool has an "owning group". Users in the owning group are allowed to add 
-and remove systems from the pool.
-
-Job submitters may influence the system selection through the job XML.
+The proposal described in this document allows job submitters to influence the
+system selection through the job XML based on a system's pool membership.
 
 
 Proposed user interface
 -----------------------
-
-Defining ad hoc system pools
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* As a Beaker user, I want to define a new pool of systems.
-
-Through the web UI:
-
-   Select "Systems -> Pools" from the menu, then click "Create". Enter the
-   pool name, and select a group to own the pool.
-
-Through the ``bkr`` cli::
-
-   bkr pool-create --owner-group=<groupname> <poolname>
-
-A new pool is created containing no systems.
-
-
-Controlling system pool membership
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* As a pool owner, I want to add a system to my pool.
-
-Through the web UI:
-
-   On the system page, click the "Pools" tab. Enter the name of the pool and 
-   click "Add".
-
-Through the ``bkr`` cli::
-
-    bkr pool-add --pool=<poolname> --system=<fqdn>
-
-* As a pool owner, I want to remove a system from my pool.
-
-Through the web UI:
-
-   On the system page, click the "Pools" tab. Click "Remove" next to your pool.
-
-Through the ``bkr`` cli::
-
-    bkr pool-remove --pool=<poolname> --system=<fqdn>
-
 
 Restrict recipe execution to a specific system pool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -133,22 +91,6 @@ Deferred features
 The following additional features are under consideration, but have been
 deliberately omitted in order to reduce the complexity of the initial
 iteration of the design:
-
-* Adding other pools as members of a pool. The initial iteration
-  does not allow pools to be members of other pools, which introduces
-  potential concerns about scalability in large organisations.
-
-  Adding this feature may also make it possible to effectively delegate
-  the ability to add systems to other pools.
-
-  See the deferred subgroups feature in :ref:`proposal-enhanced-user-groups`
-  for a possible implementation strategy that could also be used for
-  system subpools.
-
-* Pool deletion. The initial iteration does not allow pools to be deleted,
-  or even hidden. This feature may actually be needed to make various other
-  parts of the UI usable, in which case it will be designed and implemented
-  for the target release (and the design proposal updated accordingly).
 
 * Allowing users to specify a default pool preference to be used when there
   is no ``autopick`` section in the submitted recipe XML.

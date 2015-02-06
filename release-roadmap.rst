@@ -23,9 +23,12 @@ Beaker 20
 
 Planned release: **March 2015**
 
-The currently planned focus for Beaker 20 is to implement the previously
-deferred predefined access policy feature from the
-:ref:`proposal-access-policies` design proposal.
+The currently planned focus for Beaker 20 is to implement the
+:ref:`proposal-predefined-access-policies` design proposal. This proposal
+includes an initial implementation of "system pools" (replacing the current
+system groups feature), and allows systems to be configured to use the access
+policy associated with one of their pools, rather than the default system
+specific custom policy.
 
 This release will also enhance Beaker's bare metal provisioning support by
 making it possible to select which bootloader to use based not only on the
@@ -132,8 +135,8 @@ Beaker 0.15.1 (22nd October, 2013)
 
 Last maintenance release: **0.15.5 (25th February, 2014)**
 
-The focus of Beaker 0.15 was the per-system access policy portion of
-:ref:`proposal-access-policies`.
+The focus of Beaker 0.15 was the :ref:`proposal-access-policies` design
+proposal.
 
 Just as the enhanced user group model allowed groups to assume shared
 management of jobs, the new access policy model allows groups to
