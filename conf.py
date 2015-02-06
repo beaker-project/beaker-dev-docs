@@ -6,7 +6,7 @@ extensions = [
 ]
 master_doc = 'index'
 project = u'Beaker'
-copyright = u'2013, Red Hat, Inc'
+copyright = u'2015, Red Hat, Inc'
 
 release = version = "Project"
 
