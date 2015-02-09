@@ -108,7 +108,7 @@ Through the ``bkr`` cli:
 
 Create an access policy for a pool with a single rule::
 
-    bkr pool-policy-create --pool=<poolname> --policy="QE team" \
+    bkr pool-policy-create --pool=<poolname> \
         --permission=reserve --group=qeteam
 
 Remove the pool policy::
