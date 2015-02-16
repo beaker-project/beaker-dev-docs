@@ -19,10 +19,10 @@ changes), the working branch should be based on ``origin/develop`` as shown.
 For bug fixes that don't require invasive changes, then the working branch
 should be based on the latest release branch. For example, if the latest
 release shown on the `release download page
-<http://beaker-project.org/releases/>`__ is Beaker 0.15, then local branches
+<http://beaker-project.org/releases/>`__ is Beaker 19.2, then local branches
 to work on bug fixes should be created with a command like::
 
-    git checkout origin/release-0.15 -b bz123456_fix_this_bug
+    git checkout origin/release-19 -b bz123456_fix_this_bug
 
 Including the bug number in the branch name isn't required (since the branch
 name is never published to anyone else), but it's a useful reference point
@@ -112,22 +112,29 @@ authenticate you when pushing patches using git. The e-mail address in
 your git commits must also match one of the e-mail addresses you have
 registered in Gerrit.
 
-For convenience you can add the Gerrit server as a remote to your
-``.git/config``::
+For convenience, you can add the Gerrit server as a git remote::
 
-    [remote "gerrit"]
-    url = git+ssh://gerrit.beaker-project.org:29418/beaker
+    git remote add --fetch --no-tags gerrit \
+        git+ssh://gerrit.beaker-project.org:29418/beaker
 
 Once you're happy with the change and the test you have written for it,
-push your local branch to Gerrit for review::
+push your local ``myfeature`` branch to Gerrit for review::
 
     git push gerrit myfeature:refs/for/develop
 
-The destination branch in Gerrit should match the branch used as a basis for
-the patch. For a bug fix targeting Beaker 0.15, the appropriate command would
-look like::
+Alternatively, you can use the `git review 
+<https://github.com/openstack-infra/git-review>`_ tool which offers a more 
+convenient interface for working with Gerrit::
 
-    git push gerrit bz123456_fix_this_bug:refs/for/release-0.15
+    git review develop
+
+The destination branch in Gerrit should match the branch used as a basis for
+the patch. As mentioned above, new features and invasive changes should target 
+the ``develop`` branch, whereas minor fixes can target the current maintenance 
+branch (for example ``release-19``). For a bug fix targeting the Beaker 19 
+maintenance series, the appropriate command would be::
+
+    git review release-19
 
 A new "change" in Gerrit will be created from your commit. Beaker
 developers can then review and merge it as appropriate. See the `Gerrit
