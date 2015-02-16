@@ -29,8 +29,9 @@ Proposal
 
 An initial implementation of :ref:`proposal-system-pools` will be
 completed as part of this work to allow pool owners to define a pool access
-policy. A "pool" is a named collection of systems. Each pool has an "owning
-group". Users in the owning group are allowed to add and remove
+policy. A "pool" is a named collection of systems and the creating
+user is set as the pool "owner". The owner of the pool can be changed
+to a "owning group". Users in the owning group are allowed to add and remove
 systems from the pool.
 
 System owners and admins will then have the ability to either
@@ -59,7 +60,7 @@ Through the web UI:
 
 Through the ``bkr`` cli::
 
-   bkr pool-create --owner-group=<groupname> <poolname>
+   bkr pool-create <poolname>
 
 A new pool is created containing no systems.
 
@@ -89,7 +90,6 @@ Through the ``bkr`` cli::
     bkr pool-remove --pool=<poolname> --system=<fqdn>
 
 
-
 Viewing/Modifying Pool Policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -106,14 +106,15 @@ Through the web UI:
 
 Through the ``bkr`` cli:
 
-Create an access policy for a pool with a single rule::
+Grant "reserve" permission to "qeteam" user group::
 
-    bkr pool-policy-create --pool=<poolname> \
+    bkr policy-grant --pool=<poolname> \
         --permission=reserve --group=qeteam
 
-Remove the pool policy::
+Revoke the above permission::
 
-    bkr pool-policy-remove --pool=<poolname>
+    bkr policy-revoke --pool=<poolname> \
+        --permission=reserve --group=qeteam
 
 Selecting a predefined access policy for systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,30 +131,29 @@ Through the web UI:
 
 Through the ``bkr`` cli::
 
-   bkr policy-grant --system=test1.example.com --pool-policy <poolname>
+   bkr system-modify test1.example.com --pool-policy <poolname>
 
 The system will now use the access policy defined by the pool. Note
-that this will not a custom access policy that may already exist for
-the system. It will just not be applicable.
+that this will not remove the custom access policy for the system, and
+the system can be switched back to using the custom access policy.
 
-Revoking a predefined access policy for systems
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Switching to a system's custom access policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* As a Beaker system owner or administrator, I want to revoke a
-  predefined access policy for my system(s):
+* As a Beaker system owner or administrator, I want to switch to my
+  system's custom access policy:
 
 Through the web UI:
 
    Go to the "Access Policy" tab on a system's page and then click on
-   "Revoke Access Policy from System Pool".
+   "Use Custom Access Policy".
 
 Through the ``bkr`` cli::
 
-   bkr policy-revoke --system=test1.example.com --pool-policy
+   bkr system-modify test1.example.com --use-custom-policy
 
 The system will no longer use the access policy defined by a
-pool. If a custom access policy for the system was earlier defined,
-this will now take effect.
+pool and will use the system's custom access policy.
 
 
 Deferred features
