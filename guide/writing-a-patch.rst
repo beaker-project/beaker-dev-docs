@@ -13,6 +13,10 @@ Start by creating a local git branch where you will commit your work::
 This will create a local git branch called ``myfeature`` that is associated
 with the upstream ``develop`` branch for easy rebasing.
 
+Beaker uses a number of Javascript libraries which are tracked using
+git submodules. You must run ``git submodule init`` followed by ``git
+submodule update`` to clone them.
+
 For new features and any invasive bug fixes (e.g. those requiring database
 changes), the working branch should be based on ``origin/develop`` as shown.
 
@@ -77,6 +81,9 @@ already have a copy of this task, you can build it from Beaker's source
 under the ``Tasks`` subdirectory. You can base your job on this `sample
 dogfood job XML <../../sample-dogfood-job.xml>`_.
 
+Building RPMs
+~~~~~~~~~~~~~
+
 You can use ``Misc/rpmbuild.sh`` to build Beaker RPMs for testing::
 
     Misc/rpmbuild.sh -bb
@@ -86,9 +93,10 @@ SRPM and build from that::
 
     Misc/rpmbuild.sh -bs
 
-The ``Misc/rpmbuild.sh`` script will build from the HEAD commit
-in git, so make sure you have committed your changes to your local
-branch.
+You may first need to install all the build dependencies using
+``yum-builddep beaker.spec``. The ``Misc/rpmbuild.sh`` script will
+build from the HEAD commit in git, so make sure you have committed
+your changes to your local branch.
 
 If the patch changes an existing feature or adds a new one,
 then ideally the relevant documentation should be updated. Also note that
