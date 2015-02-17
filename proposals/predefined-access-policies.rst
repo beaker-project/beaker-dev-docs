@@ -3,22 +3,40 @@
 Predefined Access Policies for Systems
 ======================================
 
-:Author: Amit Saha, Dan Callaghan
+:Author: Amit Saha, Dan Callaghan, Nick Coghlan
 :Status: In progress
 :Target Release: 20
 
 Abstract
 --------
 
-:ref:`proposal-access-policies` introduced custom access policies for
-systems. It allowed adding access policy rules granting various
-permissions to individual users or groups of users. However, it did
-not allow systems to be setup with a predefined policy. This meant
-that when a new system is added, acceess policy rules *always* had to
-be manually defined. This proposal aims to allow systems to either
-define a custom access policy or to use a predefined system pool
-policy thus allowing a mechamism to apply the same access policy
-consistently across many systems.
+:ref:`proposal-access-policies` implemented in Beaker 0.15
+presents some usability challenges for shared system management: 
+
+* By default, each new system is created with a custom access policy
+  that merely grants all users the "View" permission. Only the system
+  owner (which defaults to the user that created the system entry) can
+  edit the custom access policy or do anything else with the system.
+
+* This is inconvenient for shared system management, as it means each
+  new system needs to have its policy configured appropriately for the group
+  that manages it. Changes to policy rules must also be applied to all systems
+  covered by that policy.
+
+* While these activities can be scripted through the remote web API,
+  there are still plenty of opportunities to get things wrong.
+
+This design proposal addresses that problem by changing the procedure
+for configuring a newly added group managed system to be:
+
+* add the new system to the appropriate ``system pool``
+* configure the system to use the pool policy rather than its own custom policy
+
+The new system will then use the preconfigured pool policy for access
+control, and automatically respect any future changes to that policy. If
+access needs to be temporarily restricted to meet specific access criteria,
+the system can be switched back to using its custom policy for a time,
+before being returned to using the appropriate pool policy.
 
 Dependenices
 ------------
@@ -36,14 +54,15 @@ systems from the pool.
 
 System owners and admins will then have the ability to either
 define a custom access policy specific to the system or use an
-existing policy which was defined for a system pool.
+existing policy which was defined for a system pool. The system *must*
+be added to a pool first to be able to use its policy. Using a policy
+defined for any arbitrary system pool will not be possible.
 
 Note that the system pools feature implemented as part of this work
 will only have a subset of the features described in the
 :ref:`proposal-system-pools` design proposal. It will essentially be a
 renaming of the existing "system groups" feature and aims to remove
 the ambiguity between system groups and user groups.
-
 
 Proposed User Interface
 -----------------------
@@ -56,7 +75,7 @@ Defining ad hoc system pools
 Through the web UI:
 
    Select "Systems -> Pools" from the menu, then click "Create". Enter the
-   pool name, and select a group to own the pool.
+   pool name, and (optionally) select a group to own the pool.
 
 Through the ``bkr`` cli::
 
@@ -64,6 +83,23 @@ Through the ``bkr`` cli::
 
 A new pool is created containing no systems.
 
+Modifying system pool ownership
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* As a pool owner, I want to change the owner to another group or user:
+
+Through the web UI:
+
+   Select "Systems -> Pools" from the menu, then click on the
+   pool name for which you want to change the owner to go to the pool
+   page, and change the owner to a group or another user.
+
+Through the ``bkr`` cli::
+
+   bkr pool-modify <poolname> --owner <user>
+   bkr pool-modify <poolname> --owning-group <group>
+
+The pool ownership will be changed to the given user or group.
 
 Controlling system pool membership
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
