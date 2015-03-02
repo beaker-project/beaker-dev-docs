@@ -135,7 +135,10 @@ server utilizes them.
 
 *Kid*
     Provides the templating language for hand written templates, as well as TG 
-    widgets. Kid is no longer under active development.
+    widgets. Kid is no longer under active development. Beaker's kid templates
+    rely on some of the `TurboGears standard variables and functions
+    <http://turbogears.org/1.0/docs/StdVars.html>`__ as well as custom
+    variables defined in ``bkr.server.stdvars``.
 
 *SQLAlchemy*
     An ORM database interface. Used exclusively for all access to Beaker's 
