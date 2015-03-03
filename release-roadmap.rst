@@ -41,11 +41,22 @@ Beaker 21
 
 Planned release: **April 2015**
 
-The currently planned focus for Beaker 21 is to improve Beaker's result
-reporting capabilities, as described in :ref:`proposal-job-page-improvements`
+The currently planned focus for Beaker 21 is embedding the `Cockpit server 
+management tool <http://cockpit-project.org/>`_ on the Beaker system page, to 
+provide a friendly graphical interface for managing Beaker systems while they 
+are powered on and have the Cockpit agent installed.
+
+
+Beaker 22
+^^^^^^^^^
+
+Planned release: **mid-2015**
+
+The currently planned focus for Beaker 22 is to improve Beaker's result
+reporting capabilities, as described in :ref:`proposal-job-page-improvements`.
 
 This release will also provide the ability to directly export results in
-JUnit-compatible XML format, rather than continuing to requir the use of
+JUnit-compatible XML format, rather than continuing to require the use of
 external XSLT templates to perform the translation.
 
 
