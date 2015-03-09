@@ -50,7 +50,8 @@ completed as part of this work to allow pool owners to define a pool access
 policy. A "pool" is a named collection of systems and the creating
 user is set as the pool "owner". The owner of the pool can be changed
 to a "owning group". Users in the owning group are allowed to add and remove
-systems from the pool.
+systems from the pool. If the "owning group" of a system pool is
+deleted, the deleting user is made the "owning user" of the system pool.
 
 System owners and admins will then have the ability to either
 define a custom access policy specific to the system or use an
