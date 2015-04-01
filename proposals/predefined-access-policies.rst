@@ -165,15 +165,14 @@ Revoke the above permission::
 Selecting a predefined access policy for systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* As a Beaker system owner or administrator, I want to set a
+* As a Beaker system owner, privileged user or administrator, I want to set a
   predefined access policy for my system(s):
 
 Through the web UI:
 
    Go to the "Access Policy" tab on a system's page and then click on
-   "Use Access Policy from System Pool" and then type in the system
-   pool name whose access policy is to be used for the system and
-   click on "Save Changes".
+   "Use policy from pool:" and select the system pool whose access
+   policy is to be used for the system and click on "Save Changes".
 
 Through the ``bkr`` cli::
 
@@ -183,13 +182,14 @@ The system will now use the access policy defined by the pool. Note
 that this will not remove the custom access policy for the system, and
 the system can be switched back to using the custom access policy.
 
-When a system pool is deleted, any system using its access policy is
-updated to use its custom access policy instead.
+When a system is removed from a pool or the system pool is deleted,
+any system using its access policy is updated to use its custom access
+policy instead.
 
 Switching to a system's custom access policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* As a Beaker system owner or administrator, I want to switch to my
+* As a Beaker system owner, privileged user or administrator, I want to switch to my
   system's custom access policy:
 
 Through the web UI:
