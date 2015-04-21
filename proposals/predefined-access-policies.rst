@@ -4,8 +4,8 @@ Predefined Access Policies for Systems
 ======================================
 
 :Author: Amit Saha, Dan Callaghan, Nick Coghlan
-:Status: In progress
-:Target Release: 20
+:Status: Implemented
+:Release: `20 <http://beaker-project.org/docs/whats-new/release-20.html>`__
 
 Abstract
 --------
