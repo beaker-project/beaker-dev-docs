@@ -106,5 +106,6 @@ Next, setup the project on gerrit:
 - Login to gerrit and go to
   http://gerrit.beaker-project.org/#/admin/create-project/
 - Inherit permissions from the "beaker" project
-- Setup "DENY" permission for  "Fedorahosted replication authgroup"
+- Go to http://gerrit.beaker-project.org/#/admin/projects/<project_name>,access and setup
+  "DENY" permission for  "Fedorahosted replication authgroup" and "Github replication authgroup"
 - Push the new project's code to the master branch: ``git push git+ssh://<username>@gerrit.beaker-project.org:29418/<project-name> master``
