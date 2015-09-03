@@ -230,14 +230,19 @@ Proposed design
    Once the new design has been prototyped this section will be updated with 
    more detail, including screenshots.
 
-The job page will present job metadata (retention settings, submitter and 
-group, history, comments) in a tabbed view, with suitable UI elements for 
-updating the metadata when it is possible and permitted.
+The job page will include a header identifying the job ID, owner, and group. 
+The header will include buttons for job actions (Edit, Clone, Cancel, Delete). 
+Underneath the header, job metadata and the job whiteboard will be presented 
+side by side.
 
 Below that, all recipes in the job will be presented in a grid view, with 
 a one-line summary of each recipe and a link to the recipe page. The grid view 
-will be grouped by recipe set, and guest recipes will be grouped within their 
-host recipes.
+will be grouped by recipe set, and guest recipes will be grouped with their 
+host recipes using indentation to reflect the hierarchy.
+
+.. figure:: job-page-improvements-screenshots/job.png
+   :width: 100%
+   :alt: [screenshot of proposed job page]
 
 This represents a significant change compared with the current job page: 
 individual recipe results will no longer be displayed inline on the job page. 
