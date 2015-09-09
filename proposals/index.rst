@@ -26,12 +26,7 @@ into a future version of Beaker.
    Proposals will be referred to by their title or URL rather than by a
    number (this is similar to Fedora feature names)
 
-.. * There are currently no completely new design proposals under consideration
-
-.. toctree::
-   :maxdepth: 1
-
-   job-page-improvements
+* There are currently no completely new design proposals under consideration
 
 .. note::
 
@@ -55,6 +50,7 @@ project), or else under active development for an upcoming Beaker release.
 .. toctree::
    :maxdepth: 1
 
+   job-page-improvements
    reference-harness
 
 

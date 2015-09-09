@@ -4,8 +4,8 @@ Job Page Improvements
 =====================
 
 :Author: Dan Callaghan
-:Status: Proposed
-:Target Release: 21
+:Status: In progress
+:Target Release: 22
 
 Background and rationale
 ------------------------
