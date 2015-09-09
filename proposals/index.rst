@@ -56,7 +56,6 @@ project), or else under active development for an upcoming Beaker release.
    :maxdepth: 1
 
    reference-harness
-   inventory-lshw-migration
 
 
 Deferred design proposals
@@ -85,7 +84,8 @@ version of Beaker.
 
 .. toctree::
    :maxdepth: 1
-	      
+
+   inventory-lshw-migration
    predefined-access-policies
    system-page-improvements
    custom-distros

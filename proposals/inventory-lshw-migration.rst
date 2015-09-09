@@ -4,8 +4,8 @@ Migrating to lshw for inventory task
 ====================================
 
 :Author: Amit Saha
-:Status: In Progress
-:Target Release: TBD
+:Status: Implemented
+:Release: `21 <../../docs/whats-new/release-21.html#hardware-scanning-using-lshw>`__
 
 Abstract
 --------
@@ -13,12 +13,6 @@ Abstract
 This proposal outlines the plan of action to replace the current
 :program:`smolt` based inventory task by one which uses
 :program:`lshw`. 
-
-
-Dependencies
-------------
-
-None.
 
 
 Proposal
@@ -69,13 +63,14 @@ an example of a feature that we need to add to lshw to suit Beaker's needs.
 
 Enhancements to lshw will first be incorporated into Beaker project's
 fork of `lshw <http://git.beaker-project.org/cgit/lshw/>`__ and then
-pull requests sent to the `upstream repository
-<https://github.com/lyonel/lshw>`__ via GitHub. 
+submitted to the upstream `lshw issue tracker 
+<http://www.ezix.org/project/query?component=lshw&order=id&desc=1>`_.
 
 The major enhancements merged to the fork so far are:
 
-- A "chroot" based testing framework. This is described briefly in the
-  next section.
+- A ``LD_PRELOAD``-based testing framework, using sample data from real
+  hardware. The tests are currently maintained in `a separate git tree 
+  <https://github.com/beaker-project/lshw-tests>`__.
 
 - Better support for retrieving CPU information on ARM and s390x systems.
 
@@ -87,17 +82,6 @@ Maintaining a fork of lshw is motivated by two factors:
 - Allow sufficient testing of the changes and then submit requests for
   integration into upstream
 
-Test suite development for lshw
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The chroot based testing framework runs lshw in a chroot so that
-instead of reading files from /proc and /sys on the 
-system, they read the test data files made available in the chroot.
-
-Although this doesn't allow testing data which are retrieved by
-lshw using system calls, it allows a basic level of sanity
-testing to make sure regressions are caught.
-
 
 Comparing the data obtained from smolt and lshw
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,6 +92,12 @@ is required to see if lshw is able to get all the data that
 smolt would give us. If not, either lshw  should be enhanced to
 retrieve those data or if the data is not important to Beaker's users,
 document it as such.
+
+To assist with comparing the output from both versions of 
+:program:`beaker-system-scan`, the Beaker team has developed a new Beaker task, 
+`/distribution/inventory-compare 
+<https://git.beaker-project.org/cgit/beaker-meta-tasks/tree/inventory-compare>`_, 
+which shows the two outputs side by side and highlights any differences found.
 
 Related tasks
 ~~~~~~~~~~~~~
