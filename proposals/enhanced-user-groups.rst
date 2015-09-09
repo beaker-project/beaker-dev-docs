@@ -5,8 +5,8 @@ Enhanced User Groups
 
 :Authors: Dan Callaghan, Nick Coghlan, Raymond Mancy
 :Status: Implemented
-:Initial Release: `0.13 <http://beaker-project.org/docs/whats-new/release-0.13.html>`__
-:Final Release: `0.14 <http://beaker-project.org/docs/whats-new/release-0.14.html>`__
+:Release: `0.13 <http://beaker-project.org/docs/whats-new/release-0.13.html>`__,
+          `0.14 <http://beaker-project.org/docs/whats-new/release-0.14.html>`__
 
 Abstract
 --------
