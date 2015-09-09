@@ -87,12 +87,12 @@ version of Beaker.
    :maxdepth: 1
 	      
    predefined-access-policies
-   access-policies-for-systems
    system-page-improvements
    custom-distros
    beaker-usage-report-emails
    dynamic-virtualization
    external-tasks
+   access-policies-for-systems
    enhanced-user-groups
    harness-api
 
