@@ -41,17 +41,6 @@ implemented as either TG1 controllers or Flask handlers. We are also
 aiming to replace the front end components with cleaner alternatives
 based on Twitter Bootstrap.
 
-Improved inventory task
-~~~~~~~~~~~~~~~~~~~~~~~
-
-The current inventory task is based on the ``smolt`` project. Replacing this
-with a new version based on ``lshw`` will improve many aspects of the
-system capability reporting, providing a richer set of attributes to
-query on a larger set of hardware architectures.
-
-This idea is covered by the :ref:`proposal-lshw-migration` design
-proposal.
-
 Run tests from inside a container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -80,26 +69,6 @@ Issues with running the existing Beah harness inside a container has raised
 the importance of making the new reference harness more readily available
 to Beaker users.
 
-Shared access policies
-~~~~~~~~~~~~~~~~~~~~~~
-
-Beaker 0.15 implemented the :ref:`proposal-access-policies`
-design proposal, taking the previously limited permissions model for
-individual systems and providing a far more fine-grained model. Remote
-access through the Beaker command line client makes it possible to manage
-access to large numbers of systems this way.
-
-Beaker 20 will implement the :ref:`proposal-predefined-access-policies`
-proposal, allowing a common access policy to be shared amongst multiple
-systems by placing those systems into an appropriate system pool.
-
-
-Planned development
--------------------
-
-The ideas in this section are firmly on the to-do list, but it is not yet
-clear when they will be ready for inclusion.
-
 Improvements to the job status page
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -123,6 +92,13 @@ useful guide to this (:issue:`1123244`).
 A potentially related change would be to support retrieval of
 `subunit results <https://pypi.python.org/pypi/python-subunit>`__ for
 in-progress jobs.
+
+
+Planned development
+-------------------
+
+The ideas in this section are firmly on the to-do list, but it is not yet
+clear when they will be ready for inclusion.
 
 Task oriented guides for users and administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

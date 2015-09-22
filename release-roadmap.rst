@@ -18,12 +18,37 @@ process.
 Upcoming releases
 -----------------
 
-Beaker 20
+Beaker 22
 ^^^^^^^^^
 
-Planned release: **March 2015**
+Planned release: **end-2015**
 
-The currently planned focus for Beaker 20 is to implement the
+The currently planned focus for Beaker 22 is to improve Beaker's result
+reporting capabilities, as described in :ref:`proposal-job-page-improvements`.
+
+This release will also provide the ability to directly export results in
+JUnit-compatible XML format, rather than continuing to require the use of
+external XSLT templates to perform the translation.
+
+
+Past releases
+-------------
+
+Beaker 21 (26th August, 2015)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Beaker 21 was shipped with one-click hardware scanning support for all Beaker
+systems. From this release onwards, Beaker uses ``lshw`` for improved hardware
+scanning abilities. This results in better system capability reporting,
+resulting in a richer set of attributes to query on a larger set of hardware
+architectures.
+
+Beaker 20 (20th April, 2015)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **20.2 (14th July, 2015)**
+
+The focus for Beaker 20 was to implement the
 :ref:`proposal-predefined-access-policies` design proposal. This proposal
 includes an initial implementation of "system pools" (replacing the current
 system groups feature), and allows systems to be configured to use the access
@@ -36,32 +61,6 @@ CPU architecture of the server being provisioned, but also the specific
 operating system being installed.
 
 
-Beaker 21
-^^^^^^^^^
-
-Planned release: **April 2015**
-
-The currently planned focus for Beaker 21 is embedding the `Cockpit server 
-management tool <http://cockpit-project.org/>`_ on the Beaker system page, to 
-provide a friendly graphical interface for managing Beaker systems while they 
-are powered on and have the Cockpit agent installed.
-
-
-Beaker 22
-^^^^^^^^^
-
-Planned release: **mid-2015**
-
-The currently planned focus for Beaker 22 is to improve Beaker's result
-reporting capabilities, as described in :ref:`proposal-job-page-improvements`.
-
-This release will also provide the ability to directly export results in
-JUnit-compatible XML format, rather than continuing to require the use of
-external XSLT templates to perform the translation.
-
-
-Past releases
--------------
 
 Beaker 19 (25th November, 2014)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
