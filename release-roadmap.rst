@@ -21,14 +21,21 @@ Upcoming releases
 Beaker 22
 ^^^^^^^^^
 
-Planned release: **end-2015**
+Planned release: **End-2015**
+
+This release will provide the ability to directly export results in
+JUnit-compatible XML format, rather than continuing to require the use of
+external XSLT templates to perform the translation.
+
+Furthermore it will provide the ability to exclude users from groups.
+
+Beaker 23
+^^^^^^^^^
+
+Planned release: **March 2016**
 
 The currently planned focus for Beaker 22 is to improve Beaker's result
 reporting capabilities, as described in :ref:`proposal-job-page-improvements`.
-
-This release will also provide the ability to directly export results in
-JUnit-compatible XML format, rather than continuing to require the use of
-external XSLT templates to perform the translation.
 
 
 Past releases
