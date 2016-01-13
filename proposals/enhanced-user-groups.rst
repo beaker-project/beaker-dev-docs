@@ -77,10 +77,10 @@ original submitter.
 Submission delegates
 ~~~~~~~~~~~~~~~~~~~~
 
-Users may nominate additional :term:`submission delegates` that are
-permitted to submit and modify jobs on the user's behalf.
-These users will retain job modification privileges only for the
-jobs they submit.
+Users may nominate additional :term:`submission delegates <submission 
+delegate>` that are permitted to submit and modify jobs on the user's behalf. 
+These users will retain job modification privileges only for the jobs they 
+submit.
 
 
 General use cases
@@ -366,11 +366,11 @@ case is in assigning resources based on the :term:`job owner`, not the
 Viewing submission delegates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* I want to view the list of :term:`submission delegates` for a user.
-  (:issue:`960302`).
+* I want to view the list of :term:`submission delegates <submission delegate>`
+  for a user. (:issue:`960302`).
 
-The list of :term:`submission delegates` should be included on the user's
-preferences page.
+The list of :term:`submission delegates <submission delegate>` should be 
+included on the user's preferences page.
 
 
 Updating submission delegations
@@ -397,7 +397,7 @@ The new :term:`submission delegate` is added and the change is recorded in the
 Through the web UI:
 
    Go to the user preferences page. Find the user in the
-   :term:`submission delegates` list, and click "Remove".
+   :term:`submission delegates <submission delegate>` list, and click "Remove".
 
 Through the ``bkr`` cli::
 
@@ -538,7 +538,6 @@ design:
 
 .. glossary::
 
-   submission delegates
    submission delegate
        A user that can submit and modify jobs on behalf of another user,
        and may or may not be a real user themselves (i.e they may be a
