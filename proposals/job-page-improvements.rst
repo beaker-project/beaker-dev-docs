@@ -5,7 +5,7 @@ Job Page Improvements
 
 :Author: Dan Callaghan
 :Status: In progress
-:Target Release: 22
+:Target Release: 23
 
 Background and rationale
 ------------------------
@@ -224,12 +224,6 @@ Additional constraints:
 Proposed design
 ---------------
 
-.. note::
-
-   At present this section is just a rough description of the proposed design. 
-   Once the new design has been prototyped this section will be updated with 
-   more detail, including screenshots.
-
 The job page will include a header identifying the job ID, owner, and group. 
 The header will include buttons for job actions (Edit, Clone, Cancel, Delete). 
 Underneath the header, job metadata and the job whiteboard will be presented 
@@ -239,6 +233,9 @@ Below that, all recipes in the job will be presented in a grid view, with
 a one-line summary of each recipe and a link to the recipe page. The grid view 
 will be grouped by recipe set, and guest recipes will be grouped with their 
 host recipes using indentation to reflect the hierarchy.
+
+In each recipe set row, a speech bubble icon will appear to indicate the 
+ability to comment as well as the presence of any existing comments.
 
 .. figure:: job-page-improvements-screenshots/job.png
    :width: 100%
@@ -256,75 +253,106 @@ The recipe page heading will be :guilabel:`R:<id>`, rather than
 a hyperlink to relate the recipe back to its containing job: "recipe 1 of 8 in 
 J:<id>".
 
-Below that will be shown the distro tree and system which were selected for the 
-recipe. Remaining UI elements will be split into three tabs covering the three 
-major steps in a recipe: system provisioning and installation, task execution, 
-and (optional) reservation. The default displayed tab will depend on the 
-current state of the recipe.
+Below that will be three quick info boxes, following the same style as the 
+system page quick info boxes. One will show the distro tree and system which 
+were selected for the recipe. The second will show the recipe whiteboard. The 
+third quick info box will show a link to the console log, and the watchdog time 
+remaining if the recipe is running.
+
+Remaining UI elements will be split into three tabs covering the three major 
+steps in a recipe: system provisioning and installation, task execution, and 
+(optional) reservation. The default displayed tab will depend on the current 
+state of the recipe.
 
 The tasks tab will show an overall summary of task execution at the top, giving 
 the most important information at a glance. Each task in the recipe will be 
-listed with one row per task, showing the relative starting time, task name, 
-and an inline summary (think Gmail's conversation list). The inline summary 
-will show distinct task parameters (:issue:`786793`) or the task whiteboard 
-value if any.
+listed with one row per task, showing the ID, relative starting time, task 
+name, and an inline summary (think Gmail's conversation list). The inline 
+summary will the task role, and can be expanded in future to show a task 
+whiteboard or distinct task parameters for repeated tasks (:issue:`786793`).
 
-Within the list of tasks, when a task row is clicked it expands to show the 
-complete task details. This view is split vertically (or with some UI to flip 
-between the two views): one side shows the results (what *actually* happened), 
-with relative timestamps aligned with the task timestamps so that the temporal 
-relationship is clear. The other side shows task settings (what the user 
-*requested*) such as parameters, role, and whiteboard.
+Within the list of tasks, when a task row is expanded it shows the complete 
+task details. This expanded view has two panes: one shows the results (what 
+*actually* happened), with relative timestamps aligned with the task timestamps 
+so that the temporal relationship is clear. The other pane shows task settings 
+(what the user *requested*) such as parameters, role, and whiteboard.
 
 By default when the recipe page loads, the currently running task is expanded. 
-If all tasks are finished, the first failing task is expanded. The UI could 
-also offer tools like a button to expand all failing tasks.
+If all tasks are finished, the first failing task is expanded.
 
-Each task and result row will include a button or icon to access the most 
-important log, and an additional UI element to open a modal listing all logs. 
-For tasks executed with the default harness and RHTS scripts, the primary log 
-for a task is :file:`TESTOUT.log` and for a result :file:`test_log*.log`.
+Each task and result row will include a link to the most important log, and an 
+additional icon link which opens a popover listing all logs. For tasks executed 
+with the default harness and RHTS scripts, the primary log for a task is 
+:file:`TESTOUT.log` and for a result :file:`test_log*.log`.
 
-Comments and ack/nak (together referred to as "reviewing") will be available 
-for recipe sets and recipes on the job page, as well as individual tasks and 
-results on the tasks tab of the recipe page. In all cases a common UI element 
-will be used to indicate the ability to review as well as the presence or 
-absence of any existing reviews.
+Similar to the job page, a speech bubble icon indicates the ability to comment 
+as well as the presence of any existing comments. The tasks tab will allow 
+commenting on each task and result.
+
+.. figure:: job-page-improvements-screenshots/recipe-tasks.png
+   :width: 100%
+   :alt: [screenshot of proposed recipe page, tasks tab]
 
 The installation tab of the recipe page will show a quick summary at the top, 
-matching the layout of the summary on the tasks tab. Since detailed progress 
-information is not available for the installation, the progress can be 
-summarized with a phrase: "rebooted", "started", "post-install started", 
-"completed".
+matching the layout of the summary on the tasks tab. Installation logs will 
+also be included, following a similar approach to task logs.
 
-The rest of the installation tab will be split into two views, in the same way 
-as the task details. On one side it will show the installation check-in 
-timestamps, logs, and kickstart and kernel options generated by Beaker (what 
-*actually* happened). On the other side it will show recipe configuration (what 
-the user *requested*): kickstart metadata, repos, packages, and partitions.
+The rest of the installation tab will have two panes, matching the task 
+details. One pane will show the installation progress using check-in timestamps 
+and kickstart and kernel options generated by Beaker (what *actually* 
+happened). The other pane will show recipe settings (what the user 
+*requested*): kickstart metadata, repos, packages, and partitions.
+
+.. figure:: job-page-improvements-screenshots/recipe-installation.png
+   :width: 100%
+   :alt: [screenshot of proposed recipe page, installation tab]
 
 On the reservation tab, Beaker will show whether a reservation was requested 
 and its requested duration. If the recipe is still running, the job owner can 
-adjust the request. If the recipe is currently reserved, it will show 
-a countdown of the remaining time with buttons to extend or release the 
-reservation. At the bottom, a grid will display the timestamp and user for each 
-extension to the reservation.
+adjust the request. If the recipe is currently reserved, it will have buttons 
+to extend or release the reservation.
+
+.. figure:: job-page-improvements-screenshots/recipe-reservation.png
+   :width: 100%
+   :alt: [screenshot of proposed recipe page, reservation tab]
 
 If the recipe has not released its system because other recipes in the recipe 
 set are not finished yet, the reservation tab will also display this fact. "The 
 system has not been released yet because the following recipes are still 
 running: ..."
 
-.. no concrete ideas for this yet, needs prototyping:
-   - quick access to console log? visible from everywhere on the page always? 
-   hovering somehow?
-
 
 Deferred features
 -----------------
 
-The following job-related features are desirable but were not considered as 
-part of this proposal, in order to minimize its scope:
+The following job-related features are desirable but have been ruled out of 
+this proposal, in order to minimize its scope:
+
+* Task whiteboards. We have a place in the UI to show these but they are not
+  implemented yet, because there are some unanswered questions such as where to 
+  edit them.
+
+* Waiving individual results. This has some unresolved implications on the job
+  matrix and other parts of Beaker, so this proposal only covers the existing 
+  functionality of waiving ("nak'ing") recipe sets.
+
+* Commenting on individual recipes, because we have not figured a way to
+  display them consistently with other comment types across both the job page 
+  and recipe page.
+
+* Tracking extensions to a reserved recipe.
+
+* Reporting a problem with a system from the recipe page directly. This
+  functionality is available on the existing recipe page, but it is omitted 
+  from this new design. Placing a button for it in the recipe status quick info 
+  box would make the button into the most prominent UI element on the whole 
+  page, but it is not an important enough feature to warrant that. Users can 
+  still report a problem with the system by clicking the link to the system 
+  page.
+
+  In future we envisage a dedicated page for viewing the console log (with 
+  streaming support) which could also include a shortcut for reporting 
+  a problem with the system.
 
 * Reviewing results across multiple jobs. We have job matrix for this already,
   and it's not perfect, but any improvements to it are out of scope for this 
