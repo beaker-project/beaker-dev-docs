@@ -307,7 +307,7 @@ a consistent and obvious name (for example, ``harness-checkin.log``).
 Storing results and logs in external systems
 ++++++++++++++++++++++++++++++++++++++++++++
 
-The are no plans to integrate Beaker itself with any specific tool for managing 
+There are no plans to integrate Beaker itself with any specific tool for managing
 test runs and results. But a harness implementation may choose to report its 
 results to an external tool in addition to (or instead of) reporting results to 
 Beaker. In this case it would be useful for the Beaker results to contain 
