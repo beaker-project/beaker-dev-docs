@@ -18,31 +18,39 @@ process.
 Upcoming releases
 -----------------
 
-Beaker 22
+Beaker 24
 ^^^^^^^^^
 
-Planned release: **End-2015**
-
-This release will provide the ability to directly export results in
-JUnit-compatible XML format, rather than continuing to require the use of
-external XSLT templates to perform the translation.
-
-Furthermore it will provide the ability to exclude users from groups.
-
-Beaker 23
-^^^^^^^^^
-
-Planned release: **March 2016**
-
-The currently planned focus for Beaker 22 is to improve Beaker's result
-reporting capabilities, as described in :ref:`proposal-job-page-improvements`.
-
+Beaker 24 will provide a production ready implementation for provisioning
+virtual machines in OpenStack. This provides a basis for supporting image based
+provisioning with OpenStack Glance.
 
 Past releases
 -------------
 
+Beaker 23 (7th July, 2016)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The focus on Beaker 23 was to improve Beaker's result reporting capabilities, as
+described in :ref:`proposal-job-page-improvements`. It ships with a new recipe
+state reflecting the provisioning of a machine and generating GRUB2 menus for
+x86 EFI systems.
+
+Beaker 22 (14th January, 2016)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **22.3 (1st April, 2016)**
+
+Beaker 22 added support for extra job XML elements and inverted groups.
+
+This release also provides the ability to directly export results in a
+JUnit-compatible XML format, rather than continuing to require the use of
+external XSLT templates to perform the translation.
+
 Beaker 21 (26th August, 2015)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **21.2 (17th November, 2015)**
 
 Beaker 21 was shipped with one-click hardware scanning support for all Beaker
 systems. From this release onwards, Beaker uses ``lshw`` for improved hardware

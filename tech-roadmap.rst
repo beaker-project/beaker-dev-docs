@@ -41,16 +41,6 @@ implemented as either TG1 controllers or Flask handlers. We are also
 aiming to replace the front end components with cleaner alternatives
 based on Twitter Bootstrap.
 
-Run tests from inside a container
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Project Atomic uses rpm-ostree to manage the host environment, so we
-can't install arbitrary additional packages. However, an Atomic host
-provides the bare minimum of infrastructure needed to run containers
-and hence Project Atomic bare metal provisioning will be supported by
-offering the ability to run tests inside of a container instead of directly
-on the host (:issue:`1131388`).
-
 Reference harness modernisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -68,31 +58,6 @@ harness.
 Issues with running the existing Beah harness inside a container has raised
 the importance of making the new reference harness more readily available
 to Beaker users.
-
-Improvements to the job status page
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The current job status page is difficult to read and use in many respects.
-
-The :ref:`proposal-job-page-improvements` design proposal for Beaker 21 aims
-to address this wide array of significant issues.
-
-xUnit (and subunit?) output support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-While a Jenkins plugin to trigger Beaker jobs is available, the reporting is
-currently limited as Beaker doesn't provide job results in a format that
-Jenkins understands (although it is possible to use XSLT to translate them).
-
-It would be helpful if Beaker supported exporting the results of jobs in
-xUnit format. The nose `xunit plugin
-<http://nose.readthedocs.org/en/latest/plugins/xunit.html>`__ may be a
-useful guide to this (:issue:`1123244`).
-
-A potentially related change would be to support retrieval of
-`subunit results <https://pypi.python.org/pypi/python-subunit>`__ for
-in-progress jobs.
-
 
 Planned development
 -------------------
@@ -222,7 +187,7 @@ Fedora 19+), but there are ongoing issues with upgrades of dependencies
 that don't currently have solid backwards compatibility policies.
 
 The current plan is to start running Beaker's continuous integration tests
-in Fedora's `Beaker instance <http://beaker.fedoraproject.org>`__ (on Fedora),
+in Fedora's `Beaker instance <http://beaker.qa.fedoraproject.org>`__ (on Fedora),
 in addition to running them on RHEL6.
 
 We also plan to resolve the remaining packaging issues preventing inclusion
@@ -421,6 +386,8 @@ Previously implemented ideas
 The following ideas were included in earlier versions of this roadmap, but
 are now implemented in Beaker:
 
+- `Running tests in a Container <https://beaker-project.org/docs/user-guide/contained-test-harness.html>`_
+- `Job results in JUnit XML format <https://beaker-project.org/docs/whats-new/release-22.html#job-results-in-junit-xml-format>`__
 - `System page redesign <https://beaker-project.org/docs/whats-new/release-19.html#improved-system-page>`__
 - `Experimental support for Open Stack based dynamic virtualization <http://beaker-project.org/docs/whats-new/release-0.17.html>`__
 - `Installation specific theming of the Web UI <https://beaker-project.org/docs/whats-new/release-0.17.html#theming-the-web-interface>`__
