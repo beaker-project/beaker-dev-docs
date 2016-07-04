@@ -21,7 +21,6 @@ some ideas on possible changes that may be of interest, consult the
 
    getting-started
    what-to-work-on
-   virtual-fedora/index
    source-walkthrough
    code-guidelines
    ui-guidelines
