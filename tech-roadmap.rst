@@ -424,7 +424,6 @@ are now implemented in Beaker:
 - `System page redesign <https://beaker-project.org/docs/whats-new/release-19.html#improved-system-page>`__
 - `Experimental support for Open Stack based dynamic virtualization <http://beaker-project.org/docs/whats-new/release-0.17.html>`__
 - `Installation specific theming of the Web UI <https://beaker-project.org/docs/whats-new/release-0.17.html#theming-the-web-interface>`__
-- `Virtual only test bed for Beaker <https://beaker-project.org/dev/guide/virtual-fedora/>`__
 - `IPv6 support in the default test harness <http://beah.readthedocs.org/en/latest/admin.html#using-beah-for-ipv6-testing>`__
 - `Delegating job submission <../docs/whats-new/release-0.14.html#submission-delegates>`__
 - `Separate system architecture guide <../docs/whats-new/release-0.14.html#architecture-guide>`__
