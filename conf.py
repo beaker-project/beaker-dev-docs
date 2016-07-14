@@ -18,7 +18,7 @@ html_theme = 'default'
 
 intersphinx_mapping = {
     'python': ('http://docs.python.org/', None),
-    'sqlalchemy': ('http://docs.sqlalchemy.org/en/rel_0_7/', None),
+    'sqlalchemy': ('http://docs.sqlalchemy.org/en/latest/', None),
 }
 
 # This config is also a Sphinx extension with some Beaker-specific customisations:

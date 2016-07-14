@@ -8,26 +8,23 @@ Model
 ~~~~~
 
 From version 0.16 onwards, Object Relational Mapped classes should be defined 
-`declaratively
-<http://docs.sqlalchemy.org/en/rel_0_7/orm/extensions/declarative.html>`__. Previous
-versions used `Classical Mapping
-<http://docs.sqlalchemy.org/en/rel_0_7/orm/mapper_config.html#classical-mappings>`__ 
-for some classes.
+declaratively (see :ref:`sqlalchemy:declarative_toplevel`).
+Previous versions used "classical mapping" for some classes (see 
+:ref:`sqlalchemy:classical_mapping`).
 
 Some basic guidelines to follow when modifying model:
 
 -  Commonly used queries should be encapsulated as class methods of the
-   respective classes or using `hybrid attributes
-   <http://docs.sqlalchemy.org/en/rel_0_7/orm/extensions/hybrid.html>`__.
+   respective classes or using :ref:`hybrid attributes 
+   <sqlalchemy:hybrids_toplevel>`.
 -  Enumerated types should be defined as type DeclEnum and not be
    described in a database schema. This helps avoid over normalization,
    cuts down on unnecessary calls to the database, and reduces the
    likelihood of complex joins that confuse the query optimizer. This
    only applies though if it's an enumeration that is static.
--  When writing queries, use ORM attributes over `SQL Expression
-   Language
-   <http://docs.sqlalchemy.org/en/rel_0_7/core/tutorial.html?highlight=sql%20expression%20language>`__
-   whenever possible, and never use `Text <http://docs.sqlalchemy.org/en/rel_0_7/core/types.html>`__.
+-  When writing queries, use ORM attributes over SQL expression
+   language whenever possible, and never use 
+   :py:func:`sqlalchemy.sql.expression.text`.
 -  Write efficient queries. Do what you can to write the most reasonably
    efficient query. For various reasons, Beaker has few options of
    removing its historical data. Thus, dataset can only increase in size
@@ -36,19 +33,17 @@ Some basic guidelines to follow when modifying model:
    and create a marked reduction in usability.
 -  Beyond the basic relationship mapping, relationships should be
    defined keeping performance in mind. The sqlalchemy documentation
-   provides some good
-   `ideas <http://docs.sqlalchemy.org/en/rel_0_7/orm/collections.html>`_.
+   provides some good ideas (see :ref:`sqlalchemy:largecollections`).
 -  Remember to define relevant cascade options.
 
 
 Database column defaults
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-For database columns with `default values 
-<http://docs.sqlalchemy.org/en/rel_0_7/core/schema.html#column-insert-update-defaults>`__, 
-always use a Python-level default: pass a scalar or Python callable as the 
-*default* parameter for the :py:class:`Column() <sqlalchemy.schema.Column>` 
-constructor.
+For database columns with default values, always use a Python-level default: 
+pass a scalar or Python callable as the *default* parameter for the 
+:py:class:`Column() <sqlalchemy.schema.Column>` constructor. See 
+:ref:`sqlalchemy:metadata_defaults` for more details.
 
 Note that this means the default value will *not* appear on the column 
 definition in the database schema. Schema upgrade notes which add a new column 
