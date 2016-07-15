@@ -3,6 +3,16 @@ Getting started
 
 .. highlight:: console
 
+Prerequisites
+-------------
+
+The Beaker team uses `RHEL
+6 <http://www.redhat.com/products/enterprise-linux/server/>`_ for
+development, testing, and deployment, therefore you should install RHEL6 or
+CentOS 6 in a virtual machine before continuing with the steps described below.
+Beaker should also work on Fedora 16 or higher, although this configuration is
+not well tested.
+
 Beaker repository structure
 ---------------------------
 
@@ -101,12 +111,6 @@ script::
 
     cd Server/
     ./run-server.sh
-
-The Beaker team uses `RHEL
-6 <http://www.redhat.com/products/enterprise-linux/server/>`_ for
-development, testing, and deployment, therefore it is recommended to use
-RHEL 6 when writing your patch. Beaker should also work on Fedora 16 or
-higher, although this configuration is not well tested.
 
 If you want to set up a complete Beaker testing environment (including a
 lab controller) with the ability to provision systems and run jobs,
