@@ -36,24 +36,6 @@ when working on multiple patches in parallel.
 Testing your patch
 ~~~~~~~~~~~~~~~~~~
 
-Beaker has a large and thorough suite of integration tests, including
-many `Selenium/WebDriver <http://code.google.com/p/selenium/>`_ browser
-tests. You should test your patch by running the test suite either
-locally or in Beaker, or both.
-
-In order to run the test suite locally, you must create two additional
-test databases in your local MySQL instance::
-
-    mysql -uroot <<"EOF"
-    CREATE DATABASE beaker_test;
-    GRANT ALL ON beaker_test.* TO 'beaker'@'localhost' IDENTIFIED BY 'beaker';
-    EOF
-
-    mysql -uroot <<"EOF"
-    CREATE DATABASE beaker_migration_test;
-    GRANT ALL ON beaker_migration_test.* TO 'beaker'@'localhost' IDENTIFIED BY 'beaker';
-    EOF
-
 While working on your patch, you would run the unit test for your new
 feature/fix::
 

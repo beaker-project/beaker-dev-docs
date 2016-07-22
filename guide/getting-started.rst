@@ -119,3 +119,33 @@ refer to `Beaker in a box <../../docs/in-a-box/>`_, or the more detailed
 
 Running Lab Controller processes in a development environment is
 currently not well tested.
+
+How to run the test suite
+-------------------------
+
+Beaker has a large and thorough suite of integration tests, including many
+`Selenium/WebDriver <http://code.google.com/p/selenium/>`_ browser tests.
+Before submitting a patch, it should be tested by running the test suite either
+locally, or in Beaker, or both.
+
+In order to run the test suite locally, you must create two additional
+test databases in your local MySQL instance::
+
+    mysql -uroot <<"EOF"
+    CREATE DATABASE beaker_test;
+    GRANT ALL ON beaker_test.* TO 'beaker'@'localhost' IDENTIFIED BY 'beaker';
+    EOF
+
+    mysql -uroot <<"EOF"
+    CREATE DATABASE beaker_migration_test;
+    GRANT ALL ON beaker_migration_test.* TO 'beaker'@'localhost' IDENTIFIED BY 'beaker';
+    EOF
+
+Once the test databases are created, you can then run the entire test suite
+using ``run-tests.sh``::
+
+    ./run-tests.sh
+
+The ``run-tests.sh`` script is a thin wrapper around
+`nosetests <http://readthedocs.org/docs/nose/>`_ which sets up ``PYTHONPATH``
+for running from a git checkout.
