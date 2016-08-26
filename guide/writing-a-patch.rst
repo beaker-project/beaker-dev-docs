@@ -33,6 +33,20 @@ name is never published to anyone else), but it's a useful reference point
 when working on multiple patches in parallel.
 
 
+Develop against a production database snapshot
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If possible, load a large, realistic database dump into your local Beaker 
+database before you start writing any code, rather than starting from an empty 
+database. This will give you a more realistic picture of how your code will 
+perform in real world conditions.
+
+Beaker core developers can use a database dump from Red Hat's production Beaker 
+instance for their development, which will help to reveal potential problems in 
+your patch when it has to run against tables containing tens or hundreds of 
+millions of rows.
+
+
 Testing your patch
 ~~~~~~~~~~~~~~~~~~
 
