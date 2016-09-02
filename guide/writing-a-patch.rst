@@ -46,6 +46,20 @@ instance for their development, which will help to reveal potential problems in
 your patch when it has to run against tables containing tens or hundreds of 
 millions of rows.
 
+After you have loaded and migrated a database snapshot, perform the following
+steps to safeguard data and avoid interfering with production systems:
+
+#. Set all user passwords to ``NULL``::
+
+     UPDATE tg_user SET password = NULL;
+
+#. Set the power settings stored in the ``power`` table to ``NULL``::
+
+     UPDATE power SET power_address = NULL, power_user = NULL, power_passwd = NULL;
+
+#. In order to log in, set the password for a user. For example::
+
+     UPDATE tg_user SET password = sha("admin") WHERE user_name = "admin";
 
 Testing your patch
 ~~~~~~~~~~~~~~~~~~
