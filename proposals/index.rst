@@ -53,7 +53,6 @@ project), or else under active development for an upcoming Beaker release.
 .. toctree::
    :maxdepth: 1
 
-   job-page-improvements
    reference-harness
 
 
@@ -84,6 +83,7 @@ version of Beaker.
 .. toctree::
    :maxdepth: 1
 
+   job-page-improvements
    inventory-lshw-migration
    predefined-access-policies
    system-page-improvements
