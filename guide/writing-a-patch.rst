@@ -64,14 +64,20 @@ steps to safeguard data and avoid interfering with production systems:
 Testing your patch
 ~~~~~~~~~~~~~~~~~~
 
-While working on your patch, you would run the unit test for your new
-feature/fix::
+While working on your patch, you can run individual test cases as you add or 
+update them. For example::
 
     cd IntegrationTests/
-    ./run-tests.sh -sv bkr.inttest.path_to_my_new_test
+    ./run-tests.sh -sv bkr.inttest.server.selenium.test_recipes:RecipeHTTPTest.test_anonymous_cannot_update_recipe
 
-Once the new or updated test is passing, you should also run the whole
-suite to check for unintended side effects::
+Once your code is ready, you can run all the tests for a particular page, 
+command, or area of functionality to check for unintended side effects::
+
+    ./run-tests.sh -v bkr.inttest.server.selenium.test_recipes
+
+You can also run the complete test suite (but bear in mind that it takes over 
+2 hours to run, and Jenkins will do this for you once your patch is posted to 
+Gerrit)::
 
     ./run-tests.sh
 
