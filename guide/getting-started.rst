@@ -41,8 +41,8 @@ components which are also considered part of the wider "Beaker project":
    repo isn't part of Beaker as such, it's a collection of utilities
    designed to help with writing and running Beaker test cases.
 
-Cloning the main Beaker repo
-----------------------------
+Getting the source code
+-----------------------
 
 Start by cloning `Beaker's git
 repository <http://git.beaker-project.org/cgit/beaker/>`_::
@@ -67,8 +67,8 @@ directly on master (as they don't have a concept of "hot fix" releases
 that only include bug fixes - any release may include a combination of
 both new features and bug fixes)
 
-Running Beaker
---------------
+Creating and populating a database
+----------------------------------
 
 Beaker currently only supports MySQL with InnoDB as the database backend
 (it does use SQL Alchemy internally though, so porting it to an
@@ -106,6 +106,9 @@ By default this uses the ``beaker`` database on localhost. This can be
 changed by editing ``dev.cfg`` and updating the above configuration
 commands appropriately.
 
+Running the Beaker web application
+----------------------------------
+
 You can then start a development server using the ``run-server.sh``
 script::
 
@@ -120,8 +123,8 @@ refer to `Beaker in a box <../../docs/in-a-box/>`_, or the more detailed
 Running Lab Controller processes in a development environment is
 currently not well tested.
 
-How to run the test suite
--------------------------
+Running Beaker's test suite
+---------------------------
 
 Beaker has a large and thorough suite of integration tests, including many
 `Selenium/WebDriver <http://code.google.com/p/selenium/>`_ browser tests.
