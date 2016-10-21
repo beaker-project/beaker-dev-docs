@@ -39,6 +39,33 @@ components which are also considered part of the wider "Beaker project":
    repo isn't part of Beaker as such, it's a collection of utilities
    designed to help with writing and running Beaker test cases.
 
+Installing dependencies
+-----------------------
+
+Beaker depends on a number of packages which are not included in RHEL. These 
+are published on the Beaker web site in the server yum repository::
+
+    wget -O /etc/yum.repos.d/beaker-server.repo \
+        https://beaker-project.org/yum/beaker-server-RedHatEnterpriseLinux.repo
+
+The simplest way to install all the packages you will need for developing 
+Beaker is to install the latest pre-built version of Beaker's test suite. Yum 
+will pull in all the dependencies::
+
+    yum install beaker-integration-tests
+
+Since we will be running Beaker directly from a source checkout, we can now 
+remove the pre-built packages. This is just to avoid any confusion between the 
+two different copies of Beaker. The dependencies will remain installed.
+
+::
+
+    yum remove beaker-common \
+        beaker-client \
+        beaker-lab-controller \
+        beaker-server \
+        beaker-integration-tests
+
 Getting the source code
 -----------------------
 
