@@ -26,6 +26,5 @@ some ideas on possible changes that may be of interest, consult the
    ui-guidelines
    cli-guidelines
    writing-a-patch
-   example-patch
    development-lifecycle
    development-tips
