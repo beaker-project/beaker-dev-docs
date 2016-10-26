@@ -20,11 +20,11 @@ some ideas on possible changes that may be of interest, consult the
 .. toctree::
 
    getting-started
+   writing-a-patch
    what-to-work-on
    source-walkthrough
    code-guidelines
    ui-guidelines
    cli-guidelines
-   writing-a-patch
    development-lifecycle
    development-tips

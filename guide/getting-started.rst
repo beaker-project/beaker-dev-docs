@@ -177,3 +177,12 @@ using ``run-tests.sh``::
 The ``run-tests.sh`` script is a thin wrapper around
 `nosetests <http://readthedocs.org/docs/nose/>`_ which sets up ``PYTHONPATH``
 for running from a git checkout.
+
+Next steps
+----------
+
+Now that you have a working Beaker development environment, refer to the next 
+section for tips about writing your patch and posting it for review.
+
+The subsequent sections also provide important tips and guidelines about 
+different aspects of developing for Beaker.
