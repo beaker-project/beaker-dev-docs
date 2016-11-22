@@ -40,15 +40,18 @@ At present the Fedora package for git-daemon uses xinetd, but we are running it
 as a systemd service instead (defined in 
 ``/etc/systemd/system/git-daemon.service``).
 
-Tomcat
+Gerrit
 ------
 
-Tomcat listens on port 8080 to serve the Gerrit application. This port is not 
-open to the world, it is proxied by the gerrit.beaker-project.org vhost in 
-lighttpd. Gerrit also listens on port 29418 for its fake SSH service.
+Gerrit listens on port 8080 to serve its web application. This port is not open 
+to the world, it is proxied by the gerrit.beaker-project.org vhost in lighttpd. 
+Gerrit also listens on port 29418 for its fake SSH service.
 
-Note that we are *not* using Gerrit's control script ``gerrit.sh`` and we are 
-*not* running the embedded Jetty container.
+Note that although we are running Gerrit's embedded Jetty container, we are 
+*not* using Gerrit's control script ``gerrit.sh`` to start and stop the daemon 
+as described in Gerrit's documentation. Instead, the Gerrit daemon is managed 
+by systemd (service defined in ``/etc/systemd/system/gerrit.service``) so use 
+systemctl to stop and start it.
 
 There is no standard way to install or upgrade Java web apps so the following 
 layout has been devised. Gerrit WARs are kept in ``/var/lib/gerrit``. Gerrit 
@@ -57,30 +60,19 @@ beaker. So the "site path" (as mentioned in the Gerrit docs) is
 ``/var/lib/gerrit/beaker``. The ``etc`` directory for the Gerrit site is then 
 symlinked to ``/etc/gerrit/beaker``, so that it is tracked by etckeeper.
 
-Tomcat's ``/etc/tomcat/server.xml`` file defines one virtual host, 
-gerrit.beaker-project.org, with applications stored in 
-``/var/lib/tomcat/gerrit-webapps``. The ROOT application for that virtual host 
-is then symlinked to the WAR inside the Gerrit site path.
-
-To upgrade Gerrit, follow these steps::
+To upgrade Gerrit, follow these steps (also check the Gerrit release notes for 
+any other release-specific upgrade steps, such as reindexing)::
 
     cd /var/lib/gerrit
-    wget https://gerrit-releases.storage.googleapis.com/gerrit-2.6.1.war
-    java -jar gerrit-2.6.1.war init -d beaker
+    wget https://gerrit-releases.storage.googleapis.com/gerrit-2.13.3.war
+    systemctl stop gerrit
+    java -jar gerrit-2.13.3.war init -d beaker
+    chown -R tomcat:tomcat beaker
+    systemctl start gerrit
 
 The upgrade process first prompts for settings. You can accept all defaults -- 
 the defaults are the existing configuration. Then it will perform any necessary 
 schema upgrades.
-
-Also check that the permissions and ownership of 
-``/etc/gerrit/beaker/secure.config`` have not been overwritten (it must be 
-owned root:tomcat with mode 0640).
-
-Finally, force Tomcat to unpack the new WAR::
-
-    systemctl stop tomcat.service
-    rm -rf /var/lib/tomcat/gerrit-webapps/ROOT/
-    systemctl start tomcat.service
 
 SMTP
 ----
