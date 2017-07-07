@@ -39,33 +39,6 @@ components which are also considered part of the wider "Beaker project":
    repo isn't part of Beaker as such, it's a collection of utilities
    designed to help with writing and running Beaker test cases.
 
-Installing dependencies
------------------------
-
-Beaker depends on a number of packages which are not included in RHEL. These 
-are published on the Beaker web site in the server yum repository::
-
-    wget -O /etc/yum.repos.d/beaker-server.repo \
-        https://beaker-project.org/yum/beaker-server-RedHatEnterpriseLinux.repo
-
-The simplest way to install all the packages you will need for developing 
-Beaker is to install the latest pre-built version of Beaker's test suite. Yum 
-will pull in all the dependencies::
-
-    yum install beaker-integration-tests
-
-Since we will be running Beaker directly from a source checkout, we can now 
-remove the pre-built packages. This is just to avoid any confusion between the 
-two different copies of Beaker. The dependencies will remain installed.
-
-::
-
-    yum remove beaker-common \
-        beaker-client \
-        beaker-lab-controller \
-        beaker-server \
-        beaker-integration-tests
-
 Getting the source code
 -----------------------
 
@@ -92,6 +65,35 @@ directly on master (as they don't have a concept of "hot fix" releases
 that only include bug fixes - any release may include a combination of
 both new features and bug fixes)
 
+Installing dependencies
+-----------------------
+
+Beaker depends on a number of packages which are not included in RHEL. These 
+are published on the Beaker web site in the server yum repository::
+
+    wget -O /etc/yum.repos.d/beaker-server.repo \
+        https://beaker-project.org/yum/beaker-server-RedHatEnterpriseLinux.repo
+
+The simplest way to install all the packages you will need for developing 
+Beaker is to install the latest pre-built version of Beaker's test suite. Yum 
+will pull in all the dependencies (your working directory should be the project
+ root of your local clone of the main beaker project)::
+
+    yum install beaker-integration-tests
+    yum-builddep beaker.spec
+
+Since we will be running Beaker directly from a source checkout, we can now
+remove the pre-built packages. This is just to avoid any confusion between the 
+two different copies of Beaker. The dependencies will remain installed.
+
+::
+
+    yum remove beaker-common \
+        beaker-client \
+        beaker-lab-controller \
+        beaker-server \
+        beaker-integration-tests
+
 Creating and populating a database
 ----------------------------------
 
@@ -100,7 +102,7 @@ Beaker currently only supports MySQL with InnoDB as the database backend
 alternate backend shouldn't be too difficult). On RHEL and Fedora
 systems, MySQL can easily be installed with::
 
-    yum install mysql
+    yum install mysql mysql-server
 
 For Beaker development, the following settings should be added to
 ``/etc/my.cnf`` in the ``[mysqld]`` section before starting the MySQL
