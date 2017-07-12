@@ -76,8 +76,8 @@ are published on the Beaker web site in the server yum repository::
 
 The simplest way to install all the packages you will need for developing 
 Beaker is to install the latest pre-built version of Beaker's test suite. Yum 
-will pull in all the dependencies (your working directory should be the project
- root of your local clone of the main beaker project)::
+will pull in all the dependencies (your working directory should be the project 
+root of your local clone of the main beaker project)::
 
     yum install beaker-integration-tests
     yum-builddep beaker.spec
