@@ -68,15 +68,21 @@ both new features and bug fixes)
 Installing dependencies
 -----------------------
 
-Beaker depends on a number of packages which are not included in RHEL. These 
+Beaker depends on some packages in the RHEL Optional repo. If you are using
+RHEL, you should enable the Optional repo::
+
+
+    subscription-manager repos --enable=rhel-6-server-optional-rpms
+
+Beaker also depends on a number of packages which are not included in RHEL. These
 are published on the Beaker web site in the server yum repository::
 
     wget -O /etc/yum.repos.d/beaker-server.repo \
         https://beaker-project.org/yum/beaker-server-RedHatEnterpriseLinux.repo
 
-The simplest way to install all the packages you will need for developing 
-Beaker is to install the latest pre-built version of Beaker's test suite. Yum 
-will pull in all the dependencies (your working directory should be the project 
+The simplest way to install all the packages you will need for developing
+Beaker is to install the latest pre-built version of Beaker's test suite. Yum
+will pull in all the dependencies (your working directory should be the project
 root of your local clone of the main beaker project)::
 
     yum install beaker-integration-tests
