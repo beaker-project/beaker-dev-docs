@@ -54,6 +54,7 @@ project), or else under active development for an upcoming Beaker release.
    :maxdepth: 1
 
    reference-harness
+   allow-installation-user-defined-distro
 
 
 Deferred design proposals
