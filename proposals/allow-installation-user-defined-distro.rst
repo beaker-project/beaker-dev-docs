@@ -51,7 +51,11 @@ following required child elements:
   Location of the kernel image for booting the installer. This may be a path
   (relative to the base tree URL) or an absolute URL.
 ``arch``
-  CPU architecture that this distro is compatible with, for example ``x86_64`` or ``ppc64le``.
+  CPU architecture that this distro is compatible with, for example ``x86_64`` or ``ppc64le``. The
+  provided architecture must match one of the CPU architectures registered in Beaker.
+``osversion``
+  OS version expressed as the major and minor versions of this distro. The "major" attribute is
+  mandatory, but "minor" is not.
 
 
 The ``<distro/>`` element may also have these optional child elements:
@@ -59,8 +63,6 @@ The ``<distro/>`` element may also have these optional child elements:
 ``name``
   Name of the distro, for example ``RHEL-7.5-20170918.n.0``. The name is only used for display purposes.
   It will be shown on the recipe page, and is available for searching in the recipes grid.
-``osversion``
-  OS version expressed as the major and minor versions of this distro.
 ``variant``
   Variant of the distro, for example ``Server``. This is only used for display purposes.
 
