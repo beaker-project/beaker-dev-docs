@@ -146,12 +146,6 @@ push your local ``myfeature`` branch to Gerrit for review::
 
     git push gerrit myfeature:refs/for/develop
 
-Alternatively, you can use the `git review 
-<https://github.com/openstack-infra/git-review>`_ tool which offers a more 
-convenient interface for working with Gerrit::
-
-    git review develop
-
 The destination branch in Gerrit should match the branch used as a basis for
 the patch. As mentioned above, new features and invasive changes should target 
 the ``develop`` branch, whereas minor fixes can target the current maintenance 
