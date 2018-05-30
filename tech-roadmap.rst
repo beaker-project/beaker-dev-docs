@@ -90,28 +90,6 @@ should come with helper scripts scripts for installing them into a
 Beaker installation and the appropriate job definitions to execute them
 across all configured architectures and distro trees.
 
-Integration with Teiid and Metrique
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To quote their project descriptions, `Teiid <https://www.jboss.org/teiid/>`__
-is a "data virtualization system that allows applications to use data from
-multiple heterogenous data stores", while `Metrique
-<https://github.com/kejbaly2/metrique>`__ provides a "simple Python and REST
-API for ETL (extract, transform, load) workloads" and "tight clientside
-integration with popular python scientific computing libraries".
-
-What this means for Beaker is that Teiid can be used to extract data from a
-Beaker database for data mining purposes, while Metrique is a data mining
-tool that serves to make that data readily available to scientific
-computing analysis and visualisation tools (including `IPython notebooks
-<http://ipython.org/notebook>`__).
-
-Integrating cleanly with data mining tools is a better approach to building
-prediction tools for large Beaker instances than attempting to add such
-analytical capabilities to Beaker itself. Even if an installation uses other
-data extraction and warehousing systems, Teiid and Metrique based examples
-in the Beaker repos may serve as an illustrative guide.
-
 
 Exploration
 -----------
@@ -119,23 +97,6 @@ Exploration
 The ideas in this section are projects that one or more of the current
 developers are at least tinkering with, but they may be at wildly
 divergent stages of maturity.
-
-Improved handling of reservations and system loans
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-While systems in Beaker can currently be loaned to other users, the workflows
-for doing so aren't particularly convenient. It would be helpful if
-Beaker included better tools for managing System Loans, as well as a
-system for automatically returning them if unused for extended periods.
-
-This also applies to reservations, especially allowing automated
-reservations without relying on the use of a particular test harness.
-
-These ideas are covered by :ref:`proposal-time-limited-manual-reservations`
-and :ref:`proposal-time-limited-system-loans`.
-
-:issue:`734212` covers providing a command line interface to manage system
-loans.
 
 Explicit system pool selection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -155,18 +116,6 @@ the system itself.
 
 This idea is covered by the :ref:`proposal-system-pools` design proposal.
 
-Event based scheduler
-~~~~~~~~~~~~~~~~~~~~~
-
-The current scheduler has some issues and limitations that are best resolved
-by switching to a more event-driven architecture. The new design will
-involve attempting to assign newly submitted recipes to an idle system
-without placing the recipe in the main queue, and newly available systems
-to queued recipes without placing the system in the idle pool.
-
-This idea is covered by the :doc:`proposals/event-driven-scheduler` design
-proposal.
-
 More flexible job prioritisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -178,39 +127,6 @@ systems.
 This idea is covered by the :doc:`proposals/effective-job-priorities` design
 proposal.
 
-Full Fedora compatibility
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-We would like to support Fedora as a host operating system for the Beaker
-server components. This work was mostly completed in Beaker 0.14 (supporting
-Fedora 19+), but there are ongoing issues with upgrades of dependencies
-that don't currently have solid backwards compatibility policies.
-
-The current plan is to start running Beaker's continuous integration tests
-in Fedora's `Beaker instance <http://beaker.qa.fedoraproject.org>`__ (on Fedora),
-in addition to running them on RHEL6.
-
-We also plan to resolve the remaining packaging issues preventing inclusion
-of Beaker and its dependencies directly in the main Fedora package
-repositories.
-
-
-Integrated live dashboard
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-While Beaker 0.11 started sending aggregate metrics for the current system
-status directly to Graphite, it doesn't provide any native dashboard
-capability. It's desirable to provide an improved dashboard experience,
-using either Graphite's native dashboard tools, or a richer Javascript based
-charting front end (such as Rickshaw).
-
-Test suite speed improvements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Beaker's Web UI is tested using the Selenium WebDriver API to drive
-Mozilla Firefox. Using `SlimerJS <http://slimerjs.org/>`__ instead may
-decrease the runtime for the test suite considerably.
-
 Job based recipe access limitations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -219,25 +135,6 @@ recipes for unrelated jobs. While it is intentional that recipes can control
 systems other than the one they are running on, there should really be a
 mechanism that limits this access to only those systems running other
 recipes within the same recipe set.
-
-Guided editor for job definition XML
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Currently, many Beaker users rely on automated generators to create full
-Beaker job definition files from a handful of parameters. This idea is to
-use the Relax-NG schema for the job XML, as well as appropriate live queries
-of the Beaker database, to create a guided editor that will help users to
-create job definitions directly, rather than relying on automated
-generators that may expose only a fraction of Beaker's full flexibility.
-
-More complex example tasks
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Kerberos and LDAP integration are notoriously hard features to test, and
-many automated test suites simply don't bother. Beaker, however, is fully
-capable of testing Kerberos and LDAP integration, along with AMQP. This
-idea is to make sure the implementations of these tests for Beaker's own
-testing are also used as examples of Beaker's capabilities.
 
 Unifying ``hostRequires`` filtering and web UI search functionality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -257,14 +154,6 @@ UI, or vice-versa.
 It seems like it should be possible to substantially reduce the level of
 duplication between these two components, and thus make it easier to add
 new filtering and sorting criteria in the future.
-
-Raw SQL query API
-~~~~~~~~~~~~~~~~~
-
-To further help integration with data mining tools, it may be useful to
-provide the ability to query a running Beaker server for the equivalent
-SQL needed to answer certain API queries (:issue:`888102`).
-
 
 Speculative ideas
 -----------------
