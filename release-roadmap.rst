@@ -18,18 +18,36 @@ process.
 Upcoming releases
 -----------------
 
-Beaker 24
+Beaker 26
 ^^^^^^^^^
+
+Beaker 26 will support image based provisioning in OpenStack and will use
+`Restraint <https://restraint.readthedocs.org>`__ as the default test harness
+for distributions compatible with RHEL8 and greater.
+
+Past releases
+-------------
+
+Beaker 25 (9th March, 2018)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Beaker 25 adds support for provisioning arbitrary distro trees, Anaconda’s
+liveimg command, collecting device firmware versions, and many other new
+capabilities.
+
+Beaker 24 (25th January, 2017)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **24.5 (27th Oct, 2017)**
 
 Beaker 24 will provide a production ready implementation for provisioning
 virtual machines in OpenStack. This provides a basis for supporting image based
 provisioning with OpenStack Glance.
 
-Past releases
--------------
-
 Beaker 23 (7th July, 2016)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **23.3 (7th Nov, 2016)**
 
 The focus on Beaker 23 was to improve Beaker's result reporting capabilities, as
 described in :ref:`proposal-job-page-improvements`. It ships with a new recipe
