@@ -69,7 +69,6 @@ on other changes.
 
 
    system-pools
-   event-driven-scheduler
    effective-job-priorities
    time-limited-manual-reservations
    time-limited-system-loans
@@ -84,6 +83,7 @@ version of Beaker.
 .. toctree::
    :maxdepth: 1
 
+   event-driven-scheduler
    job-page-improvements
    inventory-lshw-migration
    predefined-access-policies

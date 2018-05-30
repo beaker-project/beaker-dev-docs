@@ -4,8 +4,8 @@ Event Driven Scheduling
 =======================
 
 :Author: Nick Coghlan
-:Status: Deferred
-:Target Release: TBD
+:Status: Implemented
+:Release: 25
 
 
 Abstract
