@@ -1,0 +1,9 @@
+Ready-for-Checks+1: Roman Joost <rjoost@redhat.com>
+Code-Review+1: Matt Tyson <mtyson@redhat.com>
+Code-Review+2: Dan Callaghan <dcallagh@redhat.com>
+Verified+1: Roman Joost <rjoost@redhat.com>
+Submitted-by: Roman Joost <rjoost@redhat.com>
+Submitted-at: Wed, 06 Jun 2018 06:49:37 +0000
+Reviewed-on: https://gerrit.beaker-project.org/6123
+Project: beaker-dev-docs
+Branch: refs/heads/master
