@@ -124,9 +124,9 @@ Once these settings are in place, start the database daemon::
     service mysqld start
 
 Before running the development server for the first time, you must
-create and populate its database (your working directory should be the
-``Server`` subdirectory of your local clone of the main beaker project)::
+create and populate its database::
 
+    cd Server/
     mysql -uroot <<"EOF"
     CREATE DATABASE beaker;
     GRANT ALL ON beaker.* TO 'beaker'@'localhost' IDENTIFIED BY 'beaker';
@@ -181,6 +181,7 @@ test databases in your local MySQL instance::
 Once the test databases are created, you can then run the entire test suite
 using ``run-tests.sh``::
 
+    cd IntegrationTests/
     ./run-tests.sh
 
 The ``run-tests.sh`` script is a thin wrapper around
