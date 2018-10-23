@@ -45,7 +45,9 @@ Getting the source code
 Start by cloning `Beaker's git
 repository <http://git.beaker-project.org/cgit/beaker/>`_::
 
-    git clone --recurse-submodules git://git.beaker-project.org/beaker
+    git clone git://git.beaker-project.org/beaker
+    cd beaker
+    git submodule update --init
 
 This will clone the Beaker sources and update the git submodules to keep track
 of all (recent) JS libraries.
