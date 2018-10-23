@@ -119,8 +119,9 @@ daemon::
     max_allowed_packet=50M
     character-set-server=utf8
 
-Once these settings are in place, start the database daemon::
+Once these settings are in place, enable and start the database daemon::
 
+    chkconfig mysqld on
     service mysqld start
 
 Before running the development server for the first time, you must
