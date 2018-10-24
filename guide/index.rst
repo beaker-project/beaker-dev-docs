@@ -28,3 +28,4 @@ some ideas on possible changes that may be of interest, consult the
    cli-guidelines
    development-lifecycle
    development-tips
+   onboarding
