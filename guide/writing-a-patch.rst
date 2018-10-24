@@ -138,7 +138,7 @@ registered in Gerrit.
 
 For convenience, you can add the Gerrit server as a git remote::
 
-    git remote add --fetch --no-tags gerrit \
+    git remote add --fetch gerrit \
         git+ssh://gerrit.beaker-project.org:29418/beaker
 
 Once you're happy with the change and the test you have written for it,
