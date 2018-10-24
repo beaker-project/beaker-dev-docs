@@ -129,8 +129,8 @@ Gerrit installation before being merged:
     `http://gerrit.beaker-project.org/ <http://gerrit.beaker-project.org>`_
 
 New users can sign in using any OpenID account (preferably your `Fedora
-OpenID <http://fedoraproject.org/wiki/OpenID>`_; avoid using Google
-Accounts). Be sure to configure your e-mail addresses and SSH keys in
+OpenID <http://fedoraproject.org/wiki/OpenID>`_).
+Be sure to configure your e-mail addresses and SSH keys in
 Gerrit after creating your account. Your SSH key is needed to
 authenticate you when pushing patches using git. The e-mail address in
 your git commits must also match one of the e-mail addresses you have
