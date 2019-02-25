@@ -101,3 +101,11 @@ Next, setup the project on gerrit:
 - Go to http://gerrit.beaker-project.org/#/admin/projects/<project_name>,access and setup
   "DENY" permission for  "Fedorahosted replication authgroup" and "Github replication authgroup"
 - Push the new project's code to the master branch: ``git push git+ssh://<username>@gerrit.beaker-project.org:29418/<project-name> master``
+
+Additionaly, if you're setting up a project from an existing repository:
+
+- Clone new repo locally
+- Pull all the changes from the original repo
+- Turn off ``Require Change-Id in commit message`` in Gerrit project setings
+- Push new changes to Gerrit (``git push git+ssh://<username>@gerrit.beaker-project.org:29418/<project-name> master``)
+- Turn on ``Require Change-Id in commit message`` in Gerrit project settings
