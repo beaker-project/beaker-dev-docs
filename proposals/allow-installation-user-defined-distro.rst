@@ -4,7 +4,7 @@ Allow installation of a user-defined distro that is not registered in Beaker
 ============================================================================
 
 :Author: Anwesha Chatterjee
-:Status: Not Implemented
+:Status: Implemented
 :Release: 25
 
 Background, rationale and use cases

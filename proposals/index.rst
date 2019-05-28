@@ -54,7 +54,6 @@ project), or else under active development for an upcoming Beaker release.
    :maxdepth: 1
 
    reference-harness
-   allow-installation-user-defined-distro
 
 
 Deferred design proposals
@@ -67,9 +66,8 @@ on other changes.
 .. toctree::
    :maxdepth: 1
 
-
-   system-pools
    effective-job-priorities
+   system-pools
    time-limited-manual-reservations
    time-limited-system-loans
 
@@ -83,18 +81,19 @@ version of Beaker.
 .. toctree::
    :maxdepth: 1
 
+   access-policies-for-systems
+   allow-installation-user-defined-distro
+   beaker-usage-report-emails
+   custom-distros
+   dynamic-virtualization
+   enhanced-user-groups
    event-driven-scheduler
-   job-page-improvements
+   external-tasks
+   harness-api
    inventory-lshw-migration
+   job-page-improvements
    predefined-access-policies
    system-page-improvements
-   custom-distros
-   beaker-usage-report-emails
-   dynamic-virtualization
-   external-tasks
-   access-policies-for-systems
-   enhanced-user-groups
-   harness-api
 
 
 Rejected/withdrawn design proposals
