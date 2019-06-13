@@ -37,9 +37,3 @@ Beaker. See `here
 <https://lists.fedorahosted.org/pipermail/beaker-devel/2013-November/000843.html>`__
 for some relevant discussions and the patch `here
 <https://github.com/autotest/autotest/pull/629>`__.
-
-Fedora's Beaker instance
-------------------------
-
-The Fedora project maintains a Beaker installation `here
-<https://beaker.fedoraproject.org>`__.
