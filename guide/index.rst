@@ -8,10 +8,10 @@ general assistance with using and installing Beaker:
 
 -  the `development mailing
    list <https://lists.fedorahosted.org/mailman/listinfo/beaker-devel>`_
--  the #beaker IRC channel on FreeNode (most active during Australian
-   east coast business hours, as that's where most of the current
+-  the #beaker IRC channel on FreeNode (most active during central
+   European business hours, as that's where most of the current
    developers are based, but you may still find a few folks kicking
-   around in European and US time zones)
+   around in US time zones)
 
 This document focuses on the mechanics of contributing to Beaker. For
 some ideas on possible changes that may be of interest, consult the

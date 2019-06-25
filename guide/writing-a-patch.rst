@@ -23,10 +23,10 @@ changes), the working branch should be based on ``origin/develop`` as shown.
 For bug fixes that don't require invasive changes, then the working branch
 should be based on the latest release branch. For example, if the latest
 release shown on the `release download page
-<http://beaker-project.org/releases/>`__ is Beaker 19.2, then local branches
+<http://beaker-project.org/releases/>`__ is Beaker 26.5, then local branches
 to work on bug fixes should be created with a command like::
 
-    git checkout origin/release-19 -b bz123456_fix_this_bug
+    git checkout origin/release-26 -b bz123456_fix_this_bug
 
 Including the bug number in the branch name isn't required (since the branch
 name is never published to anyone else), but it's a useful reference point
@@ -36,14 +36,14 @@ when working on multiple patches in parallel.
 Develop against a production database snapshot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If possible, load a large, realistic database dump into your local Beaker 
-database before you start writing any code, rather than starting from an empty 
-database. This will give you a more realistic picture of how your code will 
+If possible, load a large, realistic database dump into your local Beaker
+database before you start writing any code, rather than starting from an empty
+database. This will give you a more realistic picture of how your code will
 perform in real world conditions.
 
-Beaker core developers can use a database dump from Red Hat's production Beaker 
-instance for their development, which will help to reveal potential problems in 
-your patch when it has to run against tables containing tens or hundreds of 
+Beaker core developers can use a database dump from Red Hat's production Beaker
+instance for their development, which will help to reveal potential problems in
+your patch when it has to run against tables containing tens or hundreds of
 millions of rows.
 
 After you have loaded and migrated a database snapshot, perform the following
@@ -64,19 +64,19 @@ steps to safeguard data and avoid interfering with production systems:
 Testing your patch
 ~~~~~~~~~~~~~~~~~~
 
-While working on your patch, you can run individual test cases as you add or 
+While working on your patch, you can run individual test cases as you add or
 update them. For example::
 
     cd IntegrationTests/
     ./run-tests.sh -sv bkr.inttest.server.selenium.test_recipes:RecipeHTTPTest.test_anonymous_cannot_update_recipe
 
-Once your code is ready, you can run all the tests for a particular page, 
+Once your code is ready, you can run all the tests for a particular page,
 command, or area of functionality to check for unintended side effects::
 
     ./run-tests.sh -v bkr.inttest.server.selenium.test_recipes
 
-You can also run the complete test suite (but bear in mind that it takes over 
-2 hours to run, and Jenkins will do this for you once your patch is posted to 
+You can also run the complete test suite (but bear in mind that it takes over
+2 hours to run, and Jenkins will do this for you once your patch is posted to
 Gerrit)::
 
     ./run-tests.sh
@@ -147,12 +147,12 @@ push your local ``myfeature`` branch to Gerrit for review::
     git push gerrit myfeature:refs/for/develop
 
 The destination branch in Gerrit should match the branch used as a basis for
-the patch. As mentioned above, new features and invasive changes should target 
-the ``develop`` branch, whereas minor fixes can target the current maintenance 
-branch (for example ``release-19``). For a bug fix targeting the Beaker 19 
+the patch. As mentioned above, new features and invasive changes should target
+the ``develop`` branch, whereas minor fixes can target the current maintenance
+branch (for example ``release-26``). For a bug fix targeting the Beaker 26
 maintenance series, the appropriate command would be::
 
-    git review release-19
+    git review release-26
 
 A new "change" in Gerrit will be created from your commit. Beaker
 developers can then review and merge it as appropriate. See the `Gerrit

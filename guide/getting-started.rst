@@ -7,9 +7,9 @@ Prerequisites
 -------------
 
 The Beaker team uses `RHEL
-6 <http://www.redhat.com/products/enterprise-linux/server/>`_ for
-development, testing, and deployment, therefore you should install RHEL6 or
-CentOS 6 in a virtual machine before continuing with the steps described below.
+7 <https://www.redhat.com/products/enterprise-linux/server/>`_ for
+development, testing, and deployment, therefore you should install RHEL7 or
+CentOS 7 in a virtual machine before continuing with the steps described below.
 
 Beaker repository structure
 ---------------------------
@@ -20,24 +20,28 @@ systems distributed across multiple labs and take care of provisioning
 systems appropriately and dispatching jobs to them.
 
 This is the software that is developed in the `main Beaker git
-repository <http://git.beaker-project.org/cgit/beaker/>`_ (click link to
+repository <https://git.beaker-project.org/cgit/beaker/>`_ (click link to
 browse). The bulk of this developer guide focuses on this component.
 
-However, http://git.beaker-project.org plays host to a few other
+However, https://git.beaker-project.org plays host to a few other
 components which are also considered part of the wider "Beaker project":
 
--  `beaker-project.org <http://git.beaker-project.org/cgit/beaker-project.org/>`_:
+-  `beaker-project.org <https://git.beaker-project.org/cgit/beaker-project.org/>`_:
    The source for the project web site (including this developer's
    guide)
--  `beah <http://git.beaker-project.org/cgit/beah/>`_: The test harness
+-  `beah <https://git.beaker-project.org/cgit/beah/>`_: The test harness
    used to communicate between running tests and the Beaker
    infrastructure. Other test harnesses (such as autotest or STAF) are
    not yet officially supported. Unlike the Beaker web services (which
    are only officially supported on the platforms described below), the
    test harness must run on all operating systems supported for testing.
--  `rhts <http://git.beaker-project.org/cgit/rhts/>`_: The code in this
+-  `rhts <https://git.beaker-project.org/cgit/rhts/>`_: The code in this
    repo isn't part of Beaker as such, it's a collection of utilities
    designed to help with writing and running Beaker test cases.
+-  `restraint <https://git.beaker-project.org/cgit/restraint/>`_: The test harness
+   used to communicate between running tests and the Beaker
+   infrastructure. Restraint became default test harness for RHEL 8 and Fedora
+   29+.
 
 Getting the source code
 -----------------------
@@ -69,11 +73,12 @@ both new features and bug fixes)
 Installing dependencies
 -----------------------
 
-Beaker depends on some packages in the RHEL Optional repo. If you are using
-RHEL, you should enable the Optional repo::
+Beaker depends on some packages in the RHEL Optional repo and RHEL Extras repo.
+If you are using RHEL, you should enable the Optional and Extras repo::
 
 
-    subscription-manager repos --enable=rhel-6-server-optional-rpms
+    subscription-manager repos --enable=rhel-7-server-optional-rpms
+    subscription-manager repos --enable=rhel-7-server-extras-rpms
 
 Beaker also depends on a number of packages which are not included in RHEL. These
 are published on the Beaker web site in the server yum repository::
@@ -90,7 +95,7 @@ root of your local clone of the main beaker project)::
     yum-builddep beaker.spec
 
 Since we will be running Beaker directly from a source checkout, we can now
-remove the pre-built packages. This is just to avoid any confusion between the 
+remove the pre-built packages. This is just to avoid any confusion between the
 two different copies of Beaker. The dependencies will remain installed.
 
 ::
@@ -109,7 +114,7 @@ Beaker currently only supports MySQL with InnoDB as the database backend
 alternate backend shouldn't be too difficult). On RHEL and Fedora
 systems, MySQL can easily be installed with::
 
-    yum install mysql mysql-server
+    yum install mariadb mariadb-server
 
 For Beaker development, the following settings should be added to
 ``/etc/my.cnf`` in the ``[mysqld]`` section before starting the MySQL
@@ -121,8 +126,8 @@ daemon::
 
 Once these settings are in place, enable and start the database daemon::
 
-    chkconfig mysqld on
-    service mysqld start
+    systemctl enable mariadb
+    systemctl start mariadb
 
 Before running the development server for the first time, you must
 create and populate its database::
@@ -152,7 +157,7 @@ script::
 
 If you want to set up a complete Beaker testing environment (including a
 lab controller) with the ability to provision systems and run jobs,
-refer to `Beaker in a box <../../docs/in-a-box/>`_, or the more detailed 
+refer to `Beaker in a box <../../docs/in-a-box/>`_, or the more detailed
 `installation instructions <../../docs/admin-guide/installation.html>`_.
 
 Running Lab Controller processes in a development environment is
@@ -192,8 +197,8 @@ for running from a git checkout.
 Next steps
 ----------
 
-Now that you have a working Beaker development environment, refer to the next 
+Now that you have a working Beaker development environment, refer to the next
 section for tips about writing your patch and posting it for review.
 
-The subsequent sections also provide important tips and guidelines about 
+The subsequent sections also provide important tips and guidelines about
 different aspects of developing for Beaker.

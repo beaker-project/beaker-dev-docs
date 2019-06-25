@@ -43,7 +43,7 @@ This is quite straightforward. An xmlrpc call would be made to the the
 lab controller onto port 8000 (the default for beaker-proxy), with the
 method ``task_info`` and the ``qtask id``. The ``task_info()`` method
 then calls and returns ``bkr.server.taskactions.task_info``. The ``hub``
-variable is a ``HubProxy`` class from ``kobo.client``. ``HubProxy`` in
+variable is a ``HubProxy`` class from ``bkr.common.hub``. ``HubProxy`` in
 turn is merely a thin wrapper over ``xmlrpclib.ServerProxy`` that adds
 session based authentication management.
 
@@ -114,8 +114,9 @@ For further details of the design of Beaker's services, please see the
 relevant
 `docs <http://beaker-project.org/guide/Administration-Beaker_Architecture.html>`_.
 
-Beaker is developed to run in Red Hat Enterprise Linux 6 (RHEL6).
-Versions previous to 0.7 were designed for RHEL5. Although it may be
+Beaker is developed to run in Red Hat Enterprise Linux 7 (RHEL7).
+Versions previous to 27 were designed for RHEL5 and versions previous to 0.7
+were designed for RHEL5. Although it may be
 technically possible to run Beaker on other distributions, package
 dependencies and other issues may ensue.
 
@@ -125,7 +126,7 @@ quick breakdown of the major frameworks/libraries and how Beaker
 server utilizes them.
 
 *TurboGears 1.x*
-    TurboGears (TG) is a "front-to-back" web meta-framework. TurboGears 1.x is 
+    TurboGears (TG) is a "front-to-back" web meta-framework. TurboGears 1.x is
     no longer under active development, although the documentation is
     still available on the `TurboGears website
     <http://www.turbogears.org/1.0/docs/>`_. Besides the core modules,
@@ -134,19 +135,19 @@ server utilizes them.
     Beaker's own custom widgets are also built upon TG widgets.
 
 *Kid*
-    Provides the templating language for hand written templates, as well as TG 
+    Provides the templating language for hand written templates, as well as TG
     widgets. Kid is no longer under active development. Beaker's kid templates
     rely on some of the `TurboGears standard variables and functions
     <http://turbogears.org/1.0/docs/StdVars.html>`__ as well as custom
     variables defined in ``bkr.server.stdvars``.
 
 *SQLAlchemy*
-    An ORM database interface. Used exclusively for all access to Beaker's 
-    database. Note that Beaker uses some TG database modules, but these are 
+    An ORM database interface. Used exclusively for all access to Beaker's
+    database. Note that Beaker uses some TG database modules, but these are
     thin wrappers over SQLAlchemy.
 
 *Flask/CherryPy 2*
-    Provides resource routing, handling of request and response objects. 
+    Provides resource routing, handling of request and response objects.
     `CherryPy 2` is no longer under active development. Starting with
     Beaker 0.15, `Flask` will be used to perform CherryPy's functions
     and hence while Beaker still uses CherryPy, any new code should use
@@ -232,7 +233,7 @@ is a normalized version of the same name as the command, but with the
 prefix *cmd\_*. For example, ``bkr job-list`` will call the ``run()``
 method of the ``bkr.client.commands.cmd_job_list`` module.
 
-This functionality is provided by the ``kobo.client.ClientCommand``
-class, of which all Beaker commands inherit (indirectly or directly).
-This class also provides the authentication with the Beaker server via
-the same kobo classes as the `lab controller <#lab-controller>`_.
+This functionality is provided by the ``Command`` class of the
+``bkr.client.command`` module, of which all Beaker commands inherit
+(indirectly or directly). This class also provides the authentication
+with the Beaker server via the same bkr classes as the `lab controller <#lab-controller>`_.
