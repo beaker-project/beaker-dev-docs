@@ -12,19 +12,19 @@ development, as well as more speculative changes that may happen at some
 point in the future. :ref:`design-proposals` describe the major
 changes and some of them are also referenced here.
 
-If any of these projects sound particularly interesting, folks are welcome to 
+If any of these projects sound particularly interesting, folks are welcome to
 :doc:`get involved <guide/index>`.
 
 Active development
 ------------------
 
-The ideas in this section are currently under active development. Patches for 
-at least some of these are likely to be found on the `Beaker Gerrit server 
-<http://gerrit.beaker-project.org>`_, and in the absence of unexpected 
-complications, they should show up in a Beaker release within the next few 
-months. Searching `Bugzilla 
-<https://bugzilla.redhat.com/buglist.cgi?product=Beaker&bug_status=__open__>`_ 
-for Beaker bugs with target milestones set will often provide more detail on 
+The ideas in this section are currently under active development. Patches for
+at least some of these are likely to be found on the `Beaker Gerrit server
+<http://gerrit.beaker-project.org>`_, and in the absence of unexpected
+complications, they should show up in a Beaker release within the next few
+months. Searching `Bugzilla
+<https://bugzilla.redhat.com/buglist.cgi?product=Beaker&bug_status=__open__>`_
+for Beaker bugs with target milestones set will often provide more detail on
 the specific proposals.
 
 Web UI modernisation
@@ -35,11 +35,13 @@ uses SQLAlchemy rather than SQLObject for the database access layer). This
 makes some aspects of development more awkward than they might be with a
 more recent web framework.
 
-Starting with the Beaker 0.15 release, the main web server is in the
+Starting with the Beaker 28 release, the main web server is in the
 process of being migrated to Flask, by allowing endpoints to be
-implemented as either TG1 controllers or Flask handlers. We are also
-aiming to replace the front end components with cleaner alternatives
-based on Twitter Bootstrap.
+implemented Flask handlers. We are also aiming to replace the front end
+components with cleaner alternatives based on React/Patternfly.
+
+As part of those activities, we are planning to build web UI as separate
+service.
 
 Reference harness modernisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
