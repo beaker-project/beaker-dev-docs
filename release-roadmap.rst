@@ -18,18 +18,41 @@ process.
 Upcoming releases
 -----------------
 
-Beaker 26
+Beaker 28
 ^^^^^^^^^
 
-Beaker 26 will support image based provisioning in OpenStack and will use
-`Restraint <https://restraint.readthedocs.org>`__ as the default test harness
-for distributions compatible with RHEL8 and greater.
+Beaker will stop using XMLRPC protocol for communication.
+As a replacement we communication will be done via REST endpoint.
+
+UI will be separated from backend of Beaker and built as a separate service.
+
+Beaker 27
+^^^^^^^^^
+
+Beaker 27 will support python 3 implementation for client and common.
+Authentication between client/lab-controller and server will be done
+via gssapi instead of kerberos. Furthermore, AMPQ producer will be
+introduced to send updates regarding job/recipeset/recipe status.
+
+Beaker will use DNF stack instead of using YUM stack. This change
+will require to use at least EL7.6+.
 
 Past releases
 -------------
 
+Beaker 26 (4th October, 2018)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **26.6 (24th Oct, 2019)**
+
+Beaker 26 starts to use
+`Restraint <https://restraint.readthedocs.org>`__ as the default test harness
+for distributions compatible with RHEL8 and greater.
+
 Beaker 25 (9th March, 2018)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Last maintenance release: **25.6 (31th Aug, 2018)**
 
 Beaker 25 adds support for provisioning arbitrary distro trees, Anaconda’s
 liveimg command, collecting device firmware versions, and many other new
