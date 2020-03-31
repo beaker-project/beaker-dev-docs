@@ -2,7 +2,7 @@ Source code walk-through
 ------------------------
 
 Please see the
-`README <http://git.beaker-project.org/cgit/beaker/tree/README>`_ file
+`README <https://github.com/beaker-project/beaker/blob/master/README.md>`_ file
 in the root directory of Beaker's source tree for a detailed description
 of its layout.
 
