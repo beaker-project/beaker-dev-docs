@@ -1,8 +1,6 @@
 Getting started
 ===============
 
-.. highlight:: console
-
 Prerequisites
 -------------
 
@@ -20,36 +18,29 @@ systems distributed across multiple labs and take care of provisioning
 systems appropriately and dispatching jobs to them.
 
 This is the software that is developed in the `main Beaker git
-repository <https://git.beaker-project.org/cgit/beaker/>`_ (click link to
+repository <https://github.com/beaker-project/beaker>`_ (click link to
 browse). The bulk of this developer guide focuses on this component.
 
-However, https://git.beaker-project.org plays host to a few other
+However, https://github.com/beaker-project/ plays host to a few other
 components which are also considered part of the wider "Beaker project":
 
--  `beaker-project.org <https://git.beaker-project.org/cgit/beaker-project.org/>`_:
-   The source for the project web site (including this developer's
-   guide)
--  `beah <https://git.beaker-project.org/cgit/beah/>`_: The test harness
-   used to communicate between running tests and the Beaker
-   infrastructure. Other test harnesses (such as autotest or STAF) are
-   not yet officially supported. Unlike the Beaker web services (which
-   are only officially supported on the platforms described below), the
-   test harness must run on all operating systems supported for testing.
--  `rhts <https://git.beaker-project.org/cgit/rhts/>`_: The code in this
+-  `beaker-project.org <https://github.com/beaker-project/beaker-project.org>`_:
+   The source for the project web site (including this developer's guide).
+-  `rhts <https://github.com/beaker-project/rhts>`_: The code in this
    repo isn't part of Beaker as such, it's a collection of utilities
    designed to help with writing and running Beaker test cases.
--  `restraint <https://git.beaker-project.org/cgit/restraint/>`_: The test harness
+-  `restraint <https://github.com/beaker-project/restraint>`_: The test harness
    used to communicate between running tests and the Beaker
    infrastructure. Restraint became default test harness for RHEL 8 and Fedora
-   29+.
+   29+. In near future we are planning to completely running on restraint.
 
 Getting the source code
 -----------------------
 
 Start by cloning `Beaker's git
-repository <http://git.beaker-project.org/cgit/beaker/>`_::
+repository <https://github.com/beaker-project/beaker>`_::
 
-    git clone git://git.beaker-project.org/beaker
+    git clone https://github.com/beaker-project/beaker.git
     cd beaker
     git submodule update --init
 
