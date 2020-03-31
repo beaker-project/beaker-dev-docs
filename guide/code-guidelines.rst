@@ -201,10 +201,8 @@ to the ``Activity`` subclass to use, like so::
 Writing tests
 ~~~~~~~~~~~~~
 
-The `unittest2 <https://pypi.python.org/pypi/unittest2>`__ package
-adds a number of additional convenience methods and hence should be
-preferred for new tests. All existing and new tests should import it
-as : ``import unittest2 as unittest``.
+The `unittest <https://docs.python.org/2/library/unittest.html>`__
+from Python Standard Library should be used.
 
 New selenium tests should use ``webdriver`` via
 ``WebDriverTestCase``.
