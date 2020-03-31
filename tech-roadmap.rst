@@ -19,8 +19,8 @@ Active development
 ------------------
 
 The ideas in this section are currently under active development. Patches for
-at least some of these are likely to be found on the `Beaker Gerrit server
-<http://gerrit.beaker-project.org>`_, and in the absence of unexpected
+at least some of these are likely to be found on the `Beaker GitHub org
+<http://github.com/beaker-project>`_, and in the absence of unexpected
 complications, they should show up in a Beaker release within the next few
 months. Searching `Bugzilla
 <https://bugzilla.redhat.com/buglist.cgi?product=Beaker&bug_status=__open__>`_
