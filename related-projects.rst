@@ -3,12 +3,6 @@
 Related Projects
 ================
 
-Beah
-----
-
-`Beah <http://beah.readthedocs.org/>`__ is the default test
-harness used in Beaker.
-
 restraint
 ---------
 

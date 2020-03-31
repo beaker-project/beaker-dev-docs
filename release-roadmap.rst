@@ -288,4 +288,4 @@ the `release download page <https://beaker-project.org/releases/>`__.
 
 For dates of all releases back to 0.3 (14th May, 2009), refer to the release
 tags in the `Beaker git repo
-<https://git.beaker-project.org/cgit/beaker/refs/tags>`__.
+<https://github.com/beaker-project/beaker/tags>`__.
