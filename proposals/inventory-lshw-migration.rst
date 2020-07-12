@@ -62,7 +62,7 @@ hand, lshw doesn't retrieve information such as audio codecs, which is
 an example of a feature that we need to add to lshw to suit Beaker's needs.
 
 Enhancements to lshw will first be incorporated into Beaker project's
-fork of `lshw <http://git.beaker-project.org/cgit/lshw/>`__ and then
+fork of `lshw <https://github.com/beaker-project/lshw>`__ and then
 submitted to the upstream `lshw issue tracker 
 <http://www.ezix.org/project/query?component=lshw&order=id&desc=1>`_.
 
@@ -96,7 +96,7 @@ document it as such.
 To assist with comparing the output from both versions of 
 :program:`beaker-system-scan`, the Beaker team has developed a new Beaker task, 
 `/distribution/inventory-compare 
-<https://git.beaker-project.org/cgit/beaker-meta-tasks/tree/inventory-compare>`_, 
+<https://github.com/beaker-project/beaker-meta-tasks/tree/master/inventory-compare>`_,
 which shows the two outputs side by side and highlights any differences found.
 
 Related tasks

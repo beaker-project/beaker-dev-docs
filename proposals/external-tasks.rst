@@ -93,7 +93,7 @@ paths within an archive or repository.
 ::
 
     <task name="/distribution/reservesys">
-      <fetch url="git://git.beaker-project.org/beaker-core-tasks#master"
+      <fetch url="git://git.example.org/beaker-core-tasks#master"
              subdir="reservesys" />
     </task>
 
@@ -107,7 +107,7 @@ value (for example, by extracting the name from :file:`testinfo.desc`).
 ::
 
     <task>
-      <fetch url="git://git.beaker-project.org/beaker-core-tasks#master"
+      <fetch url="git://git.example.org/beaker-core-tasks#master"
              subdir="reservesys" />
     </task>
 
@@ -132,7 +132,7 @@ When a recipe-task has a fetch URL, the recipe XML served by Beaker will
 instead contain a ``<fetch/>`` element, matching the submitted job XML::
 
     <task name="/distribution/reservesys">
-      <fetch url="git://git.beaker-project.org/beaker-core-tasks#master"
+      <fetch url="git://git.example.org/beaker-core-tasks#master"
              subdir="reservesys" />
       ...
     </task>
